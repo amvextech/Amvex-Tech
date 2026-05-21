@@ -3333,8 +3333,10 @@ box-shadow:
   border: 1px solid rgba(79,110,247,0.18);
   border-radius: 100px;
   padding: 8px 20px;
-  transition: all 0.25s var(--ease);
-  position: static;
+transition:background 0.25s var(--ease),
+           color 0.25s var(--ease),
+           box-shadow 0.25s var(--ease),
+           transform 0.25s var(--ease);  position: static;
   z-index: 2;
   align-self: flex-start;
   text-decoration: none;
@@ -3471,6 +3473,52 @@ box-shadow:
   transform: translateY(-2px);
   box-shadow: 0 8px 28px rgba(79,110,247,0.45);
 }
+/* =========================================================
+   MOBILE PERFORMANCE OPTIMIZATION
+========================================================= */
+
+@media (max-width: 768px){
+
+  .svc-card{
+
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    box-shadow:
+    0 6px 18px rgba(0,0,0,0.06) !important;
+
+    will-change: auto;
+
+    transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+
+  }
+
+  .svc-card__icon-wrap{
+
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+
+    box-shadow:none !important;
+
+  }
+
+  .svc-card:hover{
+
+    transform: translateY(-4px) !important;
+
+    box-shadow:
+    0 10px 24px rgba(0,0,0,0.08) !important;
+
+  }
+
+  .svc-card__glow{
+    display:none;
+  }
+
+}
+
 
 /* ============================================================
    PORTFOLIO SECTION
