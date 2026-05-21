@@ -4314,7 +4314,7 @@ box-shadow:
   gap:3rem;
   padding:80px 0;
 }
-.footer-brand img { height:80px; }
+.footer-brand img { height:80px;width:auto }
 .footer-brand h2  { color:#fff; font-size:1.6rem; margin-bottom:10px; }
 .footer-brand p   { font-size:0.9rem; line-height:1.7; color: rgba(255,255,255,0.9); }
 
