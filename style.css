@@ -4476,7 +4476,7 @@ box-shadow:
 }
 .chat-input button:hover { transform:scale(1.1); }
 
-@media (max-width: 786px){
+@media (max-width: 768px){
   .chat-container{
     height:600px;
   }
