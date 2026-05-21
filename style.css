@@ -1649,7 +1649,7 @@ floating 4s ease-in-out infinite;
     height: 68px !important;
   }
   .logo img {
-    height: 48px !important;
+    height: 58px !important;
   }
 }
 
@@ -6640,7 +6640,7 @@ opacity:0;
   flex-shrink: 0;
 }
 .drawer-logo img {
-  height: 54px;
+  height: 44px;
   width: auto;
   object-fit: contain;
 }
@@ -7057,10 +7057,7 @@ opacity:0;
     padding: 0 18px !important;
     height: 68px !important;
   }
-  .logo img {
-    height: 48px !important;
-    max-height: 48px !important;
-  }
+ 
   /* Breadcrumbs */
   .breadcrumbs {
     padding-top: 78px;
