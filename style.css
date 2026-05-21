@@ -4388,7 +4388,7 @@ box-shadow:
   position:fixed;
   bottom:80px; right:28px;
   width:320px;
-  height:420px;
+  height:400px;
   background:var(--white);
   border-radius:var(--radius-xl);
   border:1px solid var(--border);
