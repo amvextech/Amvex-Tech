@@ -1,0 +1,94 @@
+<footer class="footer">
+    <div class="footer-bg"></div>
+
+    <div class="container">
+        <div class="footer-content">
+
+            <!-- Brand -->
+            <div class="footer-col footer-brand">
+                <img src="images/new_logo4.png" alt="Amvex Tech Logo" width="180" height="68" loading="lazy" decoding="async">
+                <p>Building digital solutions that scale, perform, and transform businesses worldwide.</p>
+
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/amvextech.in/"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1EA3kJrzTf/"><i class="bi bi-facebook"></i></a>
+                    <a href="https://wa.me/917905457261"><i class="bi bi-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.php#home">Home</a></li>
+                    <li><a href="index.php#services">Services</a></li>
+                    <li><a href="index.php#portfolio">Portfolio</a></li>
+                    <li><a href="index.php#about">About</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="service-web.php">Web Development</a></li>
+                    <li><a href="service-app.php">Mobile Apps</a></li>
+                    <li><a href="service-uiux.php">UI/UX Design</a></li>
+                    <li><a href="service-backend.php">Backend</a></li>
+                    <li><a href="service-security.php">Security</a></li>
+                    <li><a href="service-deployment.php">Deployment</a></li>
+                </ul>
+            </div>
+
+            <!-- CTA -->
+            <div class="footer-col footer-cta">
+                <h4>Start a Project</h4>
+                <p>Let's build something powerful together.</p>
+                <button onclick="window.location.href='contact.php'">
+                    Get Started →
+                </button>           
+             </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Amvex Tech — Crafted with precision in Mumbai</p>
+        </div>
+    </div>
+</footer>
+<script>
+
+const chips = document.querySelectorAll('.ctc-chip');
+const hiddenInput = document.getElementById('ctcServices');
+let selected = [];
+
+if (chips.length && hiddenInput) {
+    chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            const value = chip.dataset.val;
+            chip.classList.toggle('active');
+            selected = selected.includes(value)
+                ? selected.filter(v => v !== value)
+                : selected.concat(value);
+            hiddenInput.value = selected.join(', ');
+        });
+    });
+}
+
+</script>
+<script>
+
+const form = document.getElementById('contactForm');
+const submitBtn = document.getElementById('ctcSubmit');
+
+if (form && submitBtn) {
+    form.addEventListener('submit', () => {
+        submitBtn.disabled = true;
+        const submitText = submitBtn.querySelector('.ctc-submit__text');
+        if (submitText) submitText.textContent = 'Sending...';
+    });
+}
+
+</script>
+    <script src="script.js" defer></script>
+</body>
+</html>

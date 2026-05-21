@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amvex Tech — Web Development & Software Solutions</title>
+    <meta name="description" content="Amvex Tech builds modern websites, web apps, mobile apps, and software solutions for businesses ready to scale.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+    <link rel="preload" href="images/hero-robot4.png" as="image" fetchpriority="high">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"></noscript>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID', { 'anonymize_ip': true, 'page_title': document.title, 'page_location': window.location.href });
+    </script>
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var perfData = window.performance.timing;
+                var loadTime = perfData.loadEventEnd - perfData.navigationStart;
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'page_load_time', { 'value': loadTime });
+                }
+            }, 0);
+        });
+        document.addEventListener('click', function(e) {
+            if (typeof gtag === 'undefined') return;
+            if (e.target.closest('.svc-card__cta')) {
+                gtag('event', 'service_click', { 'service_name': e.target.closest('.svc-card').querySelector('.svc-card__title').textContent });
+            }
+            if (e.target.closest('.btn-primary, .cta-primary')) {
+                gtag('event', 'contact_form_click', { 'button_text': e.target.textContent.trim() });
+            }
+        });
+    </script>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     MOBILE DRAWER OVERLAY
+════════════════════════════════════════════════════════ -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- ════════════════════════════════════════════════════════
+     MOBILE DRAWER
+════════════════════════════════════════════════════════ -->
+<div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
+
+    <div class="drawer-header">
+        <div class="drawer-logo">
+            <img src="images/new_logo2.png" alt="Amvex Tech" width="180" height="68" decoding="async">
+        </div>
+        <button class="drawer-close" id="drawerClose" aria-label="Close menu">
+            <span class="drawer-close-icon">
+                <span></span>
+                <span></span>
+            </span>
+        </button>
+    </div>
+
+    <div class="drawer-search">
+        <div class="drawer-search-inner">
+            <i class="bi bi-search drawer-search-icon"></i>
+            <input type="text" class="drawer-search-input search-input" placeholder="Search services, pages..." autocomplete="off">
+            <div class="search-results drawer-search-results"></div>
+        </div>
+    </div>
+
+    <nav class="drawer-nav" aria-label="Main navigation">
+        <ul class="drawer-links">
+
+            <li class="drawer-item">
+                <a href="index.html" class="drawer-link drawer-link--active">
+                    <span class="drawer-link-icon"><i class="bi bi-house"></i></span>
+                    <span class="drawer-link-text">Home</span>
+                    <span class="drawer-link-arrow"><i class="bi bi-arrow-right"></i></span>
+                </a>
+            </li>
+
+            <li class="drawer-item drawer-item--accordion">
+                <button class="drawer-link drawer-accordion-toggle " aria-expanded="false" aria-controls="servicesAccordion">
+                    <span class="drawer-link-icon"><i class="bi bi-grid-1x2"></i></span>
+                    <span class="drawer-link-text">Services</span>
+                    <span class="drawer-accordion-chevron"><i class="bi bi-chevron-down"></i></span>
+                </button>
+                <div class="drawer-accordion-panel" id="servicesAccordion" hidden>
+                    <div class="drawer-accordion-inner">
+                        <p class="drawer-accordion-label">Development</p>
+                        <a href="service-web.html" class="drawer-sub-link">
+                            <span class="drawer-sub-icon">🌐</span>
+                            <div><strong>Web Development</strong><span>Modern fast websites</span></div>
+                        </a>
+                        <a href="service-app.html" class="drawer-sub-link">
+                            <span class="drawer-sub-icon">📱</span>
+                            <div><strong>Mobile Apps</strong><span>iOS & Android apps</span></div>
+                        </a>
+                        <a href="service-backend.html" class="drawer-sub-link">
+                            <span class="drawer-sub-icon">⚙️</span>
+                            <div><strong>Backend Systems</strong><span>APIs & architecture</span></div>
+                        </a>
+                        <p class="drawer-accordion-label" style="margin-top:1rem;">Design & Security</p>
+                        <a href="service-uiux.html" class="drawer-sub-link">
+                            <span class="drawer-sub-icon">🎨</span>
+                            <div><strong>UI/UX Design</strong><span>Beautiful interfaces</span></div>
+                        </a>
+                        <a href="service-security.html" class="drawer-sub-link">
+                            <span class="drawer-sub-icon">🔐</span>
+                            <div><strong>Security</strong><span>OWASP protection</span></div>
+                        </a>
+                        <a href="service-deployment.html" class="drawer-sub-link">
+                            <span class="drawer-sub-icon">🚀</span>
+                            <div><strong>Deployment</strong><span>Cloud & CI/CD</span></div>
+                        </a>
+                        <div class="drawer-cta-card">
+                            <p>Need a custom solution?</p>
+                            <button onclick="window.location.href='contact.html'" class="drawer-cta-btn">Start Project →</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="drawer-item">
+                <a href="index.html#about" class="drawer-link">
+                    <span class="drawer-link-icon"><i class="bi bi-people"></i></span>
+                    <span class="drawer-link-text">About</span>
+                    <span class="drawer-link-arrow"><i class="bi bi-arrow-right"></i></span>
+                </a>
+            </li>
+
+            <li class="drawer-item">
+                <a href="index.html#faq" class="drawer-link">
+                    <span class="drawer-link-icon"><i class="bi bi-grid"></i></span>
+                    <span class="drawer-link-text">FAQs</span>
+                    <span class="drawer-link-arrow"><i class="bi bi-arrow-right"></i></span>
+                </a>
+            </li>
+
+            <li class="drawer-item">
+                <a href="index.html#blog" class="drawer-link">
+                    <span class="drawer-link-icon"><i class="bi bi-journal-text"></i></span>
+                    <span class="drawer-link-text">Blog</span>
+                    <span class="drawer-link-arrow"><i class="bi bi-arrow-right"></i></span>
+                </a>
+            </li>
+
+            <li class="drawer-item">
+                <a href="contact.html" class="drawer-link drawer-link--cta ">
+                    <span class="drawer-link-icon"><i class="bi bi-envelope"></i></span>
+                    <span class="drawer-link-text">Contact Us</span>
+                    <span class="drawer-link-badge">Let's Talk</span>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <div class="drawer-footer">
+        <div class="drawer-footer-socials">
+            <a href="https://wa.me/917905457261" aria-label="whatsapp" class="drawer-social-btn"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://www.facebook.com/share/1EA3kJrzTf/" aria-label="Facebook" class="drawer-social-btn"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/amvextech.in/" aria-label="Instagram" class="drawer-social-btn"><i class="bi bi-instagram"></i></a>
+        </div>
+        <p class="drawer-footer-tagline">Built for businesses ready to scale.</p>
+    </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     MAIN NAVBAR (desktop + mobile shell)
+════════════════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+
+        <!-- Logo -->
+        <div class="logo">
+            <a href="index.html" aria-label="Amvex Tech home">
+                <img src="images/new_logo2.png" alt="Amvex Tech" width="180" height="68" decoding="async" fetchpriority="high">
+            </a>
+        </div>
+
+        <!-- Desktop Nav Links -->
+        <ul class="nav-links" id="navLinks" role="menubar">
+
+            <li role="none">
+                <a href="index.html"
+                   class="nav-link active"
+                   role="menuitem">
+                   Home
+                </a>
+            </li>
+
+            <li class="mega-menu" role="none">
+                <a href="index.html#services"
+                   class="nav-link "
+                   role="menuitem"
+                   aria-haspopup="true"
+                   aria-expanded="false">
+                    Services
+                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="opacity:.6;transition:transform .3s" aria-hidden="true">
+                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <div class="mega-dropdown" role="menu">
+                    <div class="mega-content">
+
+                        <div class="mega-col">
+                            <h4>Development</h4>
+                            <a href="service-web.html" class="mega-item" role="menuitem">
+                                <span>🌐</span>
+                                <div><strong>Web Development</strong><p>Modern fast websites</p></div>
+                            </a>
+                            <a href="service-app.html" class="mega-item" role="menuitem">
+                                <span>📱</span>
+                                <div><strong>Mobile Apps</strong><p>iOS & Android apps</p></div>
+                            </a>
+                            <a href="service-backend.html" class="mega-item" role="menuitem">
+                                <span>⚙️</span>
+                                <div><strong>Backend Systems</strong><p>APIs & architecture</p></div>
+                            </a>
+                        </div>
+
+                        <div class="mega-col">
+                            <h4>Design & Security</h4>
+                            <a href="service-uiux.html" class="mega-item" role="menuitem">
+                                <span>🎨</span>
+                                <div><strong>UI/UX Design</strong><p>Beautiful interfaces</p></div>
+                            </a>
+                            <a href="service-security.html" class="mega-item" role="menuitem">
+                                <span>🔐</span>
+                                <div><strong>Security</strong><p>OWASP protection</p></div>
+                            </a>
+                            <a href="service-deployment.html" class="mega-item" role="menuitem">
+                                <span>🚀</span>
+                                <div><strong>Deployment</strong><p>Cloud & CI/CD</p></div>
+                            </a>
+                        </div>
+
+                        <div class="mega-highlight">
+                            <h3>Need a custom solution?</h3>
+                            <p>We help startups & businesses scale with powerful tech.</p>
+                            <button onclick="window.location.href='contact.html'">Start Project →</button>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+
+            <li role="none">
+                <a href="index.html#about" class="nav-link" role="menuitem">About</a>
+            </li>
+
+            <li role="none">
+                <a href="index.html#faq" class="nav-link" role="menuitem">FAQs</a>
+            </li>
+
+            <li role="none">
+                <a href="index.html#blog" class="nav-link" role="menuitem">Blog</a>
+            </li>
+
+            <li role="none">
+                <a href="contact.html"
+                   class="nav-link "
+                   role="menuitem">
+                   Contact
+                </a>
+            </li>
+
+            <!-- Desktop Search -->
+            <li class="nav-search" role="none">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text"
+                           class="search-input"
+                           placeholder="Search..."
+                           aria-label="Search site"
+                           autocomplete="off">
+                    <div class="search-results" role="listbox" aria-label="Search results"></div>
+                </div>
+            </li>
+
+        </ul>
+
+        <!-- Mobile hamburger (hidden on desktop via CSS) -->
+        <button class="hamburger" id="hamburger"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="mobileDrawer">
+            <span class="hamburger-lines">
+                <span class="hline hline-1"></span>
+                <span class="hline hline-2"></span>
+                <span class="hline hline-3"></span>
+            </span>
+            <span class="hamburger-ripple"></span>
+        </button>
+
+    </div>
+</nav>
+
+  <section class="hero" id="home">
+ 
+  <!-- Full-bleed robot background image -->
+  <div class="hero-bg">
+    <img src="images/hero-robot4.png" alt="" class="hero-bg-img" aria-hidden="true" width="1440" height="900" decoding="async" fetchpriority="high">
+    <!-- subtle left-side fade so text stays readable -->
+    <div class="hero-bg-fade"></div>
+  </div>
+ 
+  <!-- Main 3-column grid -->
+  <div class="hero-inner">
+ 
+    <!-- ── LEFT: Main copy ─────────────────────────────────── -->
+    <div class="hero-left">
+ 
+      <div class="section-badge">
+        Future-Ready Digital Solutions
+      </div>
+ 
+      <h1 class="hero-title">
+        Crafting Digital<br>
+        Experiences That<br>
+        Drive <span class="gradient-text">Real Impact</span>
+      </h1>
+ 
+      <p class="hero-sub">
+        We build stunning websites, powerful web applications and digital
+        experiences that help businesses grow, engage and stand out in the
+        digital world.
+      </p>
+ 
+      <div class="hero-cta">
+        <a href="contact.html" class="btn-primary">
+          Start Your Project
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#portfolio" class="btn-secondary">
+          Explore Our Work
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+ 
+      <!-- Social proof -->
+      <div class="social-proof">
+        <div class="avatar-stack">
+          <div class="av" style="--c1:#4F6EF7;--c2:#7C3AED">A</div>
+          <div class="av" style="--c1:#06B6D4;--c2:#4F6EF7">M</div>
+          <div class="av" style="--c1:#10B981;--c2:#06B6D4">I</div>
+          <div class="av" style="--c1:#F59E0B;--c2:#EF4444">R</div>
+          <div class="av av-more">+46</div>
+        </div>
+        <div class="proof-sep"></div>
+        <div class="proof-block">
+          <strong>50+</strong> Happy Clients Worldwide
+        </div>
+        <div class="proof-sep"></div>
+        <div class="proof-block">
+          <span class="stars">★★★★★</span>
+          <strong>5.0</strong> (120+ Reviews)
+        </div>
+      </div>
+ 
+    </div>
+ 
+    <!-- ── CENTER: empty — robot lives in background ────────── -->
+    <div class="hero-spacer" aria-hidden="true"></div>
+ 
+    <!-- ── RIGHT: Feature cards ──────────────────────────────── -->
+    <div class="hero-right">
+ 
+      <div class="feat-card" data-delay="0">
+        <div class="feat-icon" style="--g1:#4F6EF7;--g2:#818CF8">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div class="feat-body">
+          <h4>Performance Boost</h4>
+          <span class="feat-value">+240%</span>
+        </div>
+        <div class="feat-spark">
+          <span style="height:30%"></span><span style="height:50%"></span>
+          <span style="height:42%"></span><span style="height:68%"></span>
+          <span style="height:58%"></span><span style="height:82%"></span>
+          <span style="height:100%"></span>
+        </div>
+      </div>
+ 
+      <div class="feat-card" data-delay="80">
+        <div class="feat-icon" style="--g1:#06B6D4;--g2:#0EA5E9">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="feat-body">
+          <h4>Secure & Reliable</h4>
+          <span class="feat-value">99.9%</span>
+        </div>
+      </div>
+ 
+      <div class="feat-card" data-delay="160">
+        <div class="feat-icon" style="--g1:#7C3AED;--g2:#A855F7">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/>
+          </svg>
+        </div>
+        <div class="feat-body">
+          <h4>AI Powered Solutions</h4>
+          <span class="feat-value" style="color:#7C3AED">Smart & Intuitive</span>
+        </div>
+      </div>
+ 
+      <div class="feat-card" data-delay="240">
+        <div class="feat-icon" style="--g1:#10B981;--g2:#34D399">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 012.09 4.18 2 2 0 014.07 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <div class="feat-body">
+          <h4>24 / 7 Support</h4>
+          <span class="feat-value" style="color:#10B981">We're here for you</span>
+        </div>
+      </div>
+ 
+    </div>
+  </div><!-- /hero-inner -->
+ 
+  <!-- ── BOTTOM STATS BAR ────────────────────────────────────── -->
+  <div class="hero-stats">
+ 
+    <div class="stat-card">
+      <div class="stat-icon-wrap" style="--g1:#4F6EF7;--g2:#7C3AED">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M9 11l3 3L22 4"/>
+          <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+        </svg>
+      </div>
+      <div class="stat-body">
+        <h3 class="counter" data-target="50" data-suffix="+">0+</h3>
+        <p>Projects Delivered</p>
+        <div class="stat-bar"><div class="stat-bar-fill" data-w="85"></div></div>
+      </div>
+    </div>
+ 
+    <div class="stat-card">
+      <div class="stat-icon-wrap" style="--g1:#06B6D4;--g2:#4F6EF7">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <div class="stat-body">
+        <h3 class="counter" data-target="30" data-suffix="+">0+</h3>
+        <p>Happy Clients</p>
+        <div class="stat-bar"><div class="stat-bar-fill" data-w="92"></div></div>
+      </div>
+    </div>
+ 
+    <div class="stat-card">
+      <div class="stat-icon-wrap" style="--g1:#7C3AED;--g2:#A855F7">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+      </div>
+      <div class="stat-body">
+        <h3 class="counter" data-target="5" data-suffix="+">0+</h3>
+        <p>Years Experience</p>
+        <div class="stat-bar"><div class="stat-bar-fill" data-w="75"></div></div>
+      </div>
+    </div>
+ 
+  </div><!-- /hero-stats -->
+ 
+</section>
+<!-- ====================================================
+     AMVEX TECH — UPGRADED SERVICES SECTION (HTML ONLY)
+==================================================== -->
+
+<section class="services" id="services">
+
+  <div class="container">
+
+    <div class="svc-header">
+      <div class="svc-header__left">
+        <span class="section-badge">Our Services</span>
+        <h2 class="svc-title">
+          Built to <span class="svc-title__accent">Scale</span><br>Designed to <span class="svc-title__accent">Impress</span>
+        </h2>
+      </div>
+      <div class="svc-header__right">
+        <p class="svc-subtitle">Comprehensive digital solutions that turn your vision into a product people love — from first pixel to final deploy.</p>
+      </div>
+    </div>
+    <!-- Floating category tabs -->
+  <div class="svc-filter-wrap">
+    <div class="svc-filter" role="tablist" aria-label="Service categories">
+      <button class="svc-tab active" data-filter="all" role="tab" aria-selected="true">All Services</button>
+      <button class="svc-tab" data-filter="build" role="tab" aria-selected="false">Build</button>
+      <button class="svc-tab" data-filter="design" role="tab" aria-selected="false">Design</button>
+      <button class="svc-tab" data-filter="infra" role="tab" aria-selected="false">Infrastructure</button>
+      <div class="svc-tab-indicator"></div>
+    </div>
+  </div>
+
+    
+    <!-- ── Service Cards Grid ── -->
+    <div class="svc-grid" id="svcGrid">
+
+      <!-- WEB DEVELOPMENT -->
+      <article class="svc-card svc-card--featured" data-cat="build" data-index="0" tabindex="0" role="article">
+        <div class="svc-card__glow"></div>
+        <div class="svc-card__number">01</div>
+        <div class="svc-card__icon-wrap svc-card__icon-wrap--web">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="svc-card__body">
+          <h3 class="svc-card__title">Web Development</h3>
+          <p class="svc-card__desc">Modern, responsive websites with React, Next.js and the latest standards — blazing fast and SEO-ready from day one.</p>
+          <ul class="svc-card__pills">
+            <li>React</li><li>Next.js</li><li>TypeScript</li><li>PHP</li>
+          </ul>
+        </div>
+        <a href="service-web.html" class="svc-card__cta" aria-label="Explore Web Development">
+          <span>Explore</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <div class="svc-card__bar svc-card__bar--web"></div>
+      </article>
+
+      <!-- MOBILE APPS -->
+      <article class="svc-card" data-cat="build" data-index="1" tabindex="0" role="article">
+        <div class="svc-card__glow"></div>
+        <div class="svc-card__number">02</div>
+        <div class="svc-card__icon-wrap svc-card__icon-wrap--mobile">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <div class="svc-card__body">
+          <h3 class="svc-card__title">Mobile Apps</h3>
+          <p class="svc-card__desc">iOS & Android apps using Flutter and React Native — one codebase, two platforms, native feel and peak performance.</p>
+          <ul class="svc-card__pills">
+            <li>Flutter</li><li>React Native</li><li>iOS</li><li>Android</li>
+          </ul>
+        </div>
+        <a href="service-app.html" class="svc-card__cta" aria-label="Explore Mobile Apps">
+          <span>Explore</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <div class="svc-card__bar svc-card__bar--mobile"></div>
+      </article>
+
+      <!-- BACKEND SOLUTIONS -->
+      <article class="svc-card" data-cat="build" data-index="2" tabindex="0" role="article">
+        <div class="svc-card__glow"></div>
+        <div class="svc-card__number">03</div>
+        <div class="svc-card__icon-wrap svc-card__icon-wrap--backend">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        </div>
+        <div class="svc-card__body">
+          <h3 class="svc-card__title">Backend Solutions</h3>
+          <p class="svc-card__desc">Scalable APIs, microservices, and database architecture for enterprise-grade apps that handle real traffic.</p>
+          <ul class="svc-card__pills">
+            <li>Node.js</li><li>PostgreSQL</li><li>Redis</li><li>GraphQL</li>
+          </ul>
+        </div>
+        <a href="service-backend.html" class="svc-card__cta" aria-label="Explore Backend Solutions">
+          <span>Explore</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <div class="svc-card__bar svc-card__bar--backend"></div>
+      </article>
+
+      <!-- UI/UX DESIGN -->
+      <article class="svc-card" data-cat="design" data-index="3" tabindex="0" role="article">
+        <div class="svc-card__glow"></div>
+        <div class="svc-card__number">04</div>
+        <div class="svc-card__icon-wrap svc-card__icon-wrap--uiux">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        </div>
+        <div class="svc-card__body">
+          <h3 class="svc-card__title">UI/UX Design</h3>
+          <p class="svc-card__desc">Beautiful, intuitive interfaces — from research and wireframes to Figma-to-code delivery that users genuinely love.</p>
+          <ul class="svc-card__pills">
+            <li>Figma</li><li>Prototyping</li><li>Design Systems</li>
+          </ul>
+        </div>
+        <a href="service-uiux.html" class="svc-card__cta" aria-label="Explore UI/UX Design">
+          <span>Explore</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <div class="svc-card__bar svc-card__bar--uiux"></div>
+      </article>
+
+      <!-- SECURITY & OPTIMIZATION -->
+      <article class="svc-card" data-cat="infra" data-index="4" tabindex="0" role="article">
+        <div class="svc-card__glow"></div>
+        <div class="svc-card__number">05</div>
+        <div class="svc-card__icon-wrap svc-card__icon-wrap--security">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="svc-card__body">
+          <h3 class="svc-card__title">Security & Optimization</h3>
+          <p class="svc-card__desc">OWASP-compliant security audits, SSL hardening, and performance tuning — zero breaches on our watch, ever.</p>
+          <ul class="svc-card__pills">
+            <li>OWASP</li><li>SSL</li><li>Performance</li><li>Audits</li>
+          </ul>
+        </div>
+        <a href="service-security.html" class="svc-card__cta" aria-label="Explore Security">
+          <span>Explore</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <div class="svc-card__bar svc-card__bar--security"></div>
+      </article>
+
+      <!-- DEPLOYMENT & SUPPORT -->
+      <article class="svc-card" data-cat="infra" data-index="5" tabindex="0" role="article">
+        <div class="svc-card__glow"></div>
+        <div class="svc-card__number">06</div>
+        <div class="svc-card__icon-wrap svc-card__icon-wrap--deploy">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/><polyline points="16 3 19 3 19 6"/><line x1="22" y1="3" x2="19" y2="6"/></svg>
+        </div>
+        <div class="svc-card__body">
+          <h3 class="svc-card__title">Deployment & Support</h3>
+          <p class="svc-card__desc">CI/CD pipelines, cloud infrastructure, monitoring, and ongoing support — so you stay focused on growing your business.</p>
+          <ul class="svc-card__pills">
+            <li>AWS</li><li>GCP</li><li>CI/CD</li><li>Docker</li>
+          </ul>
+        </div>
+        <a href="service-deployment.html" class="svc-card__cta" aria-label="Explore Deployment">
+          <span>Explore</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <div class="svc-card__bar svc-card__bar--deploy"></div>
+      </article>
+
+    </div><!-- /svc-grid -->
+
+    <!-- CTA strip -->
+    <div class="svc-cta-strip">
+      <div class="svc-cta-strip__text">
+        <strong>Not sure where to start?</strong>
+        <span>Let's talk — we'll scope your project for free.</span>
+      </div>
+      <a href="contact.html" class="svc-cta-strip__btn">Get Free Consultation →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====================================================
+     FOUNDER SECTION - PREMIUM INSANE UI
+==================================================== -->
+<section class="founder" id="founder">
+    <!-- Animated Background Elements -->
+    <div class="founder-bg-effects">
+        <div class="bg-gradient-orb orb-1"></div>
+        <div class="bg-gradient-orb orb-2"></div>
+        <div class="bg-gradient-orb orb-3"></div>
+        <div class="floating-particles">
+            <div class="particle p-1"></div>
+            <div class="particle p-2"></div>
+            <div class="particle p-3"></div>
+            <div class="particle p-4"></div>
+            <div class="particle p-5"></div>
+            <div class="particle p-6"></div>
+            <div class="particle p-7"></div>
+            <div class="particle p-8"></div>
+        </div>
+        <div class="mesh-gradient"></div>
+    </div>
+    
+    <div class="container">
+        <div class="founder-content-premium">
+            <!-- Left Side - Founder Info -->
+            <div class="founder-left">
+                <div class="founder-header-premium">
+                    <div class="section-badge">
+                        Founder & CEO
+                    </div>
+                    
+                    <h1 class="founder-title-premium">
+                        <span class="title-line"> Ideas Into</span>
+                        <span class="title-gradient">Digital Reality</span>
+                    </h1>
+                </div>
+                
+                <!-- Premium Content -->
+                <div class="founder-content-premium-text">
+                    <p>With a passion for innovation and a commitment to excellence, <span style="color:var(--accent)">"Mohammad Amir"</span> leads The team dedicated to pushing the boundaries of web development and digital transformation.</p>
+                    
+                    <div class="founder-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 11l3 3L22 4"/>
+                                    <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                                </svg>
+                            </div>
+                            <div class="highlight-text">
+                                <h4>Project Excellence</h4>
+                                <p>Delivering exceptional digital solutions</p>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </div>
+                            <div class="highlight-text">
+                                <h4>Time-Tested Expertise</h4>
+                                <p>Years of proven industry experience</p>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <div class="highlight-text">
+                                <h4>Client Success</h4>
+                                <p>Built on trust and long-term partnerships</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Premium CTA -->
+                <div class="founder-cta-premium">
+                    <a href="#portfolio" class="cta-premium secondary" aria-label="Explore our portfolio masterpieces">
+                        <span class="cta-bg"></span>
+                        <span class="cta-text">Explore Masterpieces</span>
+                        <span class="cta-icon">→</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Right Side - 3D Visual -->
+            <div class="founder-right">
+                <div class="founder-visual-premium">
+                    <!-- 3D Card -->
+                    <div class="founder-card-3d">
+                        <div class="card-face card-front">
+                            <div class="founder-image-premium">
+                                <div class="image-frame-full">
+                                    <img src="images/amir casual photo.jpeg" alt="Mohammad Amir, Founder & CEO" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: 24px;">
+                                    <div class="image-overlay-full"></div>
+                                    <div class="image-border-glow-full"></div>
+                                    
+                                    <!-- Text Overlay on Photo -->
+                                    <div class="founder-info-overlay">
+                                        <div class="info-title-overlay">Mohammad Amir</div>
+                                        <div class="info-subtitle-overlay">Founder & CEO</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-face card-back">
+                            <div class="back-content">
+                                <div class="back-title">Mission</div>
+                                <div class="back-text">To revolutionize digital experiences through innovative solutions and cutting-edge technology.</div>
+                                <div class="back-signature">
+                                    <div class="signature-line"></div>
+                                    <span>Mohammad Amir</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!-- Holographic Effect -->
+                    <div class="holographic-effect">
+                        <div class="holo-layer holo-1"></div>
+                        <div class="holo-layer holo-2"></div>
+                        <div class="holo-layer holo-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Ambient Lighting -->
+    <div class="ambient-lighting">
+        <div class="light-beam beam-1"></div>
+        <div class="light-beam beam-2"></div>
+        <div class="light-beam beam-3"></div>
+    </div>
+</section>
+
+<!-- ====================================================
+     PORTFOLIO SECTION
+==================================================== -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Work</span>
+                <h2>Recent <span class="svc-title__accent">Projects</span></h2>
+                <p>Showcasing our best work and client success stories</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="project-image">
+                        <div class="image-placeholder"><img src="images/e-commerce platform.jpg" alt="E-Commerce Platform" loading="lazy" decoding="async"></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Full-stack e-commerce solution with payment integration and inventory management.</p>
+                        <div class="tech-tags">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="project-image">
+                        <div class="image-placeholder"><img src="images/saas dashboard.jpg" alt="SaaS Dashboard" loading="lazy" decoding="async"></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>SaaS Dashboard</h3>
+                        <p>Real-time analytics dashboard with user authentication and data visualization.</p>
+                        <div class="tech-tags">
+                            <span>Vue.js </span>
+                            <span>Express</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="project-image">
+                        <div class="image-placeholder"><img src="images/social networking app.jpg" alt="Social Networking App" loading="lazy" decoding="async"></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Social Networking App</h3>
+                        <p>Cross-platform mobile app with real-time messaging and notifications.</p>
+                        <div class="tech-tags">
+                            <span>React Native</span>
+                            <span>Firebase</span>
+                            <span>Redux</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================
+         ABOUT SECTION
+    ==================================================== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <span class="section-badge">About Us</span>
+                    <h2>Who <span class="svc-title__accent">We</span> Are</h2>
+                    <p>Amvex Tech is a team of passionate developers, designers, and strategists dedicated to building digital solutions that drive real business results.</p>
+                    <p>With years of experience across various industries, we combine technical excellence with creative problem-solving to deliver projects that exceed expectations and stand the test of time.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <p>Expert Team</p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <p>Agile Methodology</p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <p>24/7 Support</p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <p>On-Time Delivery</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="images/about-us.jpg" alt="About Us" loading="lazy" decoding="async">
+                </div>
+            </div>
+        </div>
+    </section>
+       <!-- ====================================================
+         TECH MARQUEE SECTION
+    ==================================================== -->
+    <section class="tech-marquee-section">
+        <div class="marquee-label">Technologies We Work With</div>
+        <div class="marquee-track-wrapper">
+            <!-- Row 1 — scrolls left -->
+            <div class="marquee-row">
+                <div class="marquee-track">
+                    <div class="tech-pill"><span class="tech-icon">⚛️</span> React</div>
+                    <div class="tech-pill"><span class="tech-icon">🟢</span> Node.js</div>
+                    <div class="tech-pill"><span class="tech-icon">🐘</span> PHP</div>
+                    <div class="tech-pill"><span class="tech-icon">🍃</span> MongoDB</div>
+                    <div class="tech-pill"><span class="tech-icon">🐘</span> PostgreSQL</div>
+                    <div class="tech-pill"><span class="tech-icon">🔷</span> TypeScript</div>
+                    <div class="tech-pill"><span class="tech-icon">🌊</span> Tailwind CSS</div>
+                    <div class="tech-pill"><span class="tech-icon">▲</span> Next.js</div>
+                    <div class="tech-pill"><span class="tech-icon">🦋</span> Flutter</div>
+                    <div class="tech-pill"><span class="tech-icon">🔥</span> Firebase</div>
+                    <div class="tech-pill"><span class="tech-icon">☁️</span> AWS</div>
+                    <div class="tech-pill"><span class="tech-icon">🐳</span> Docker</div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="tech-pill"><span class="tech-icon">⚛️</span> React</div>
+                    <div class="tech-pill"><span class="tech-icon">🟢</span> Node.js</div>
+                    <div class="tech-pill"><span class="tech-icon">🐘</span> PHP</div>
+                    <div class="tech-pill"><span class="tech-icon">🍃</span> MongoDB</div>
+                    <div class="tech-pill"><span class="tech-icon">🐘</span> PostgreSQL</div>
+                    <div class="tech-pill"><span class="tech-icon">🔷</span> TypeScript</div>
+                    <div class="tech-pill"><span class="tech-icon">🌊</span> Tailwind CSS</div>
+                    <div class="tech-pill"><span class="tech-icon">▲</span> Next.js</div>
+                    <div class="tech-pill"><span class="tech-icon">🦋</span> Flutter</div>
+                    <div class="tech-pill"><span class="tech-icon">🔥</span> Firebase</div>
+                    <div class="tech-pill"><span class="tech-icon">☁️</span> AWS</div>
+                    <div class="tech-pill"><span class="tech-icon">🐳</span> Docker</div>
+                </div>
+            </div>
+            <!-- Row 2 — scrolls right -->
+            <div class="marquee-row">
+                <div class="marquee-track marquee-reverse">
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">🇻</span> Vue.js</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">🐍</span> Python</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">☕</span> Java</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">🦀</span> GraphQL</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">📱</span> React Native</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">🔴</span> Redis</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">☸️</span> Kubernetes</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">🐙</span> GitHub Actions</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">⚡</span> Express.js</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">🌐</span> Nginx</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">🎨</span> Figma</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">📊</span> MySQL</div>
+                    <!-- Duplicate -->
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">🇻</span> Vue.js</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">🐍</span> Python</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">☕</span> Java</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">🦀</span> GraphQL</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">📱</span> React Native</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">🔴</span> Redis</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">☸️</span> Kubernetes</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">🐙</span> GitHub Actions</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">⚡</span> Express.js</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">🌐</span> Nginx</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">🎨</span> Figma</div>
+                    <div class="tech-pill tech-pill-dark"><span class="tech-icon">📊</span> MySQL</div>
+                </div>
+            </div>
+        </div>
+        <!-- Animated orbit backdrop -->
+        <div class="tech-orbit-bg" aria-hidden="true">
+            <div class="orbit-dot od-1"> <i class="devicon-html5-plain"></i></div>
+            <div class="orbit-dot od-2"><i class="devicon-mongodb-plain-wordmark colored"></i></div>
+            <div class="orbit-dot od-3"><i class="devicon-python-plain colored"></i></div>
+            <div class="orbit-dot od-4"><i class="devicon-react-original colored"></i></div>
+            <div class="orbit-dot od-5"> <i class="devicon-kubernetes-plain"></i></div>
+            <div class="orbit-dot od-6"> <i class="devicon-android-plain"></i></div>
+            <div class="orbit-dot od-7"> <i class="devicon-hadoop-plain colored"></i></div>
+            <div class="orbit-dot od-8"><i class="devicon-css3-plain colored"></i></div>
+            <div class="orbit-dot od-9"><i class="devicon-php-plain"></i></div>
+            <div class="orbit-dot od-11"><i class="devicon-mysql-original colored"></i></div>
+            <div class="orbit-dot od-12"><i class="devicon-figma-plain colored"></i></div>
+           <div class="orbit-dot od-13"><i class="devicon-apple-original colored"></i></div>
+        </div>
+    </section>
+
+<!-- WHY CHOOSE AMVEX TECH SECTION -->
+
+<section class="amvex-why-section">
+  <div class="amvex-why-inner">
+
+    <!-- Header -->
+    <div class="amvex-why-header">
+      <div class="section-badge">
+        Why Choose Amvex Tech
+      </div>
+      <h2>Crafted For <span>Modern Digital</span> Experiences</h2>
+      <p>We build fast, beautiful and future-ready websites that help brands grow, engage and stand out.</p>
+    </div>
+
+    <!-- Grid -->
+    <div class="amvex-why-grid">
+
+      <!-- Hero Card -->
+      <div class="amvex-why-card amvex-why-card-hero">
+        <div class="amvex-why-hero-top">
+          <div class="amvex-why-hero-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 2L4.5 13.5H12L11 22L19.5 10.5H12L13 2Z" fill="#6c63ff"/>
+            </svg>
+          </div>
+          <div class="amvex-why-promise-badge">Our Promise</div>
+        </div>
+        <div class="amvex-why-hero-arrow">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 85 Q 30 20, 90 10" stroke="#6c63ff" stroke-width="2.5" stroke-dasharray="5 4" fill="none"/>
+            <path d="M78 6 L93 12 L84 24" stroke="#6c63ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <h3>Fast, Modern &<br/><span>Future-Ready</span></h3>
+        <div class="amvex-why-hero-underline"></div>
+        <p>We combine modern technologies with creative design to deliver digital experiences that are fast, smooth and built for the future.</p>
+        <div class="amvex-why-hero-stats">
+          <div class="amvex-why-stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="16" height="12" rx="2"/><path d="M20 11h2v6h-2"/><path d="M7 19v2"/><path d="M12 19v2"/>
+            </svg>
+            <span class="amvex-why-stat-value">100%</span>
+            <span class="amvex-why-stat-label">Responsive</span>
+          </div>
+          <div class="amvex-why-stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            <span class="amvex-why-stat-value">Modern</span>
+            <span class="amvex-why-stat-label">UI/UX</span>
+          </div>
+          <div class="amvex-why-stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10"/><path d="M12 12l3-3"/><circle cx="12" cy="12" r="1" fill="currentColor"/>
+            </svg>
+            <span class="amvex-why-stat-value">Optimized</span>
+            <span class="amvex-why-stat-label">Performance</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Card 1: Premium UI/UX -->
+      <div class="amvex-why-card amvex-why-card-feature">
+        <div class="amvex-why-feat-icon-wrap amvex-icon-pink">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#f472b6" stroke-width="1.5"/><circle cx="9" cy="10" r="1.5" fill="#f472b6"/><circle cx="15" cy="10" r="1.5" fill="#f472b6"/><circle cx="12" cy="7" r="1.5" fill="#f472b6"/><circle cx="9" cy="14" r="1.5" fill="#f472b6"/><circle cx="15" cy="14" r="1.5" fill="#f472b6"/></svg>
+        </div>
+        <h4>Premium UI/UX</h4>
+        <div class="amvex-why-feat-underline amvex-underline-pink"></div>
+        <p>Clean layouts, modern design systems, smooth animations and glassmorphism for a premium feel.</p>
+        <div class="amvex-why-feat-number amvex-num-pink">01</div>
+      </div>
+
+      <!-- Feature Card 2: AI-Powered Solutions -->
+      <div class="amvex-why-card amvex-why-card-feature">
+        <div class="amvex-why-feat-icon-wrap amvex-icon-blue">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#60a5fa" stroke-width="1.5"/><path d="M9 8h6M12 5v6" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round"/><path d="M7 15c-2 1-3 3-3 4h16c0-1-1-3-3-4" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="14" r="1" fill="#60a5fa"/><circle cx="16" cy="14" r="1" fill="#60a5fa"/></svg>
+        </div>
+        <h4>AI-Powered Solutions</h4>
+        <div class="amvex-why-feat-underline amvex-underline-blue"></div>
+        <p>Smart chatbot experiences and AI integration to make your website intelligent and engaging.</p>
+        <div class="amvex-why-feat-number amvex-num-blue">02</div>
+      </div>
+
+      <!-- Feature Card 3: Performance Focused -->
+      <div class="amvex-why-card amvex-why-card-feature">
+        <div class="amvex-why-feat-icon-wrap amvex-icon-green">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8 2 5 5.5 5 9c0 2.5 1 4.5 2.5 6L9 19h6l1.5-4C18 13.5 19 11.5 19 9c0-3.5-3-7-7-7z" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 19v2h6v-2" stroke="#34d399" stroke-width="1.5"/><path d="M10 10l2-4 2 4" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Performance Focused</h4>
+        <div class="amvex-why-feat-underline amvex-underline-green"></div>
+        <p>Optimized code, fast loading, smooth interactions and best practices for top performance.</p>
+        <div class="amvex-why-feat-number amvex-num-green">03</div>
+      </div>
+
+      <!-- Feature Card 4: Secure & Reliable -->
+      <div class="amvex-why-card amvex-why-card-feature">
+        <div class="amvex-why-feat-icon-wrap amvex-icon-orange">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3L4 7v5c0 4.5 3.3 8.7 8 9.9 4.7-1.2 8-5.4 8-9.9V7L12 3z" stroke="#fbbf24" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Secure & Reliable</h4>
+        <div class="amvex-why-feat-underline amvex-underline-orange"></div>
+        <p>Clean, scalable and secure development that ensures long term reliability and peace of mind.</p>
+        <div class="amvex-why-feat-number amvex-num-orange">04</div>
+      </div>
+
+    </div><!-- /grid -->
+
+    <!-- Footer bar -->
+    <div class="amvex-why-footer">
+      <div class="amvex-why-footer-item">
+        <div class="amvex-why-footer-icon amvex-footer-icon-purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div class="amvex-why-footer-text"><strong>Clean Code</strong><span>High Quality</span></div>
+      </div>
+      <div class="amvex-why-footer-item">
+        <div class="amvex-why-footer-icon amvex-footer-icon-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L4 7v5c0 4.5 3.3 8.7 8 9.9 4.7-1.2 8-5.4 8-9.9V7L12 3z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <div class="amvex-why-footer-text"><strong>Best Practices</strong><span>Industry Standard</span></div>
+      </div>
+      <div class="amvex-why-footer-item">
+        <div class="amvex-why-footer-icon amvex-footer-icon-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="3"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+        </div>
+        <div class="amvex-why-footer-text"><strong>Mobile First</strong><span>All Devices</span></div>
+      </div>
+      <div class="amvex-why-footer-item">
+        <div class="amvex-why-footer-icon amvex-footer-icon-purple">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4.5 13.5H12L11 22L19.5 10.5H12L13 2Z" fill="#6c63ff"/></svg>
+        </div>
+        <div class="amvex-why-footer-text"><strong>Lightning Fast</strong><span>Speed Optimized</span></div>
+      </div>
+      <div class="amvex-why-footer-item">
+        <div class="amvex-why-footer-icon amvex-footer-icon-orange">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18c0-3.3 2.7-6 6-6h6c3.3 0 6 2.7 6 6"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="amvex-why-footer-text"><strong>24/7 Support</strong><span>Always Here</span></div>
+      </div>
+    </div>
+
+  </div><!-- /amvex-why-inner -->
+</section>
+    <!-- ====================================================
+         PROCESS SECTION
+    ==================================================== -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Process</span>
+                <h2>How We Bring Your <span class="svc-title__accent">Ideas to Life</span></h2>
+                <p>A transparent, collaborative journey from concept to launch</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">🔍</div>
+                    <h3>Discovery</h3>
+                    <p>We dive deep into your goals, audience, and requirements to craft the perfect strategy.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">🎨</div>
+                    <h3>Design</h3>
+                    <p>Wireframes and prototypes reviewed with you before a single line of code is written.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">💻</div>
+                    <h3>Development</h3>
+                    <p>Agile sprints with weekly demos. Clean, maintainable code delivered consistently.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-icon">🧪</div>
+                    <h3>Testing</h3>
+                    <p>Comprehensive testing across devices, browsers, and performance benchmarks.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">05</div>
+                    <div class="step-icon">🚀</div>
+                    <h3>Launch</h3>
+                    <p>Smooth deployment with monitoring, backups, and ongoing support included.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================
+     TESTIMONIALS SECTION
+==================================================== -->
+<section class="testimonials" id="testimonials">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-badge">Testimonials</span>
+            <h2>What Our <span class="svc-title__accent">Clients</span> Say</h2>
+            <p>Real feedback from businesses we've helped grow</p>
+        </div>
+
+        <div class="testimonials-grid">
+
+            <div class="testimonial-card tc-1">
+                <div class="tcard-stars">
+                    <span class="tstar"></span><span class="tstar"></span><span class="tstar"></span><span class="tstar"></span><span class="tstar"></span>
+                </div>
+                <div class="tcard-quote">"</div>
+                <p class="tcard-text">Amvex Tech transformed our online presence completely. The new platform increased our conversions by 40% within the first month.</p>
+                <div class="tcard-metric"><span class="tmetric-dot"></span>+40% conversions</div>
+                <div class="testimonial-author">
+                    <div class="tcard-avatar av-1">YS</div>
+                    <div class="author-info">
+                        <h4>Yasir Shaikh</h4>
+                        <p>Owner, KidsPro School</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card tc-2">
+                <div class="tcard-stars">
+                    <span class="tstar"></span><span class="tstar"></span><span class="tstar"></span><span class="tstar"></span><span class="tstar"></span>
+                </div>
+                <div class="tcard-quote">"</div>
+                <p class="tcard-text">Professional, responsive, and incredibly talented. They delivered our complex project ahead of schedule and exceeded all expectations.</p>
+                <div class="tcard-metric"><span class="tmetric-dot"></span>Delivered early</div>
+                <div class="testimonial-author">
+                    <div class="tcard-avatar av-2">IS</div>
+                    <div class="author-info">
+                        <h4>Imran Shaikh</h4>
+                        <p>Founder, Ayat Interiors</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card tc-3">
+                <div class="tcard-stars">
+                    <span class="tstar"></span><span class="tstar"></span><span class="tstar"></span><span class="tstar"></span><span class="tstar"></span>
+                </div>
+                <div class="tcard-quote">"</div>
+                <p class="tcard-text">The best development team we've worked with. Their attention to detail and commitment to quality is truly unmatched.</p>
+                <div class="tcard-metric"><span class="tmetric-dot"></span>Top quality</div>
+                <div class="testimonial-author">
+                    <div class="tcard-avatar av-3">ED</div>
+                    <div class="author-info">
+                        <h4>Emily Davis</h4>
+                        <p>CTO, Innovate Labs</p>
+                    </div>
+                </div>
+            </div>
+
+             <div class="testimonial-card tc-2">
+                <div class="tcard-stars">
+                    <span class="tstar"></span><span class="tstar"></span><span class="tstar"></span><span class="tstar"></span><span class="tstar"></span>
+                </div>
+                <div class="tcard-quote">"</div>
+                <p class="tcard-text">AMVEX TECH completely transformed our online presence. The UI feels premium, fast, and highly professional.</p>
+                <div class="tcard-metric"><span class="tmetric-dot"></span> Highly recommended</div>
+                <div class="testimonial-author">
+                    <div class="tcard-avatar av-3">RV</div>
+                    <div class="author-info">
+                        <h4>Rahul Verma</h4>
+                        <p>Founder,Nexora</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card tc-1">
+                <div class="tcard-stars">
+                    <span class="tstar"></span><span class="tstar"></span><span class="tstar"></span><span class="tstar"></span><span class="tstar"></span>
+                </div>
+                <div class="tcard-quote">"</div>
+                <p class="tcard-text">From branding to development, everything felt polished and modern. Highly recommended for serious businesses.</p>
+                <div class="tcard-metric"><span class="tmetric-dot"></span>Value for Money</div>
+                <div class="testimonial-author">
+                    <div class="tcard-avatar av-3">SK</div>
+                    <div class="author-info">
+                        <h4>Sarah Khan</h4>
+                        <p>Startup Owner</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card tc-3">
+                <div class="tcard-stars">
+                    <span class="tstar"></span><span class="tstar"></span><span class="tstar"></span><span class="tstar"></span><span class="tstar"></span>
+                </div>
+                <div class="tcard-quote">"</div>
+                <p class="tcard-text">The best development team we've worked with. Their attention to detail and commitment to quality is truly unmatched.</p>
+                <div class="tcard-metric"><span class="tmetric-dot"></span>Worthy</div>
+                <div class="testimonial-author">
+                    <div class="tcard-avatar av-3">AP</div>
+                    <div class="author-info">
+                        <h4>Arjun Patel</h4>
+                        <p>E-commerce Brand</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        
+    </div>
+</section>
+
+    <!-- ====================================================
+         FAQ SECTION
+    ==================================================== -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">FAQ</span>
+                <h2>Frequently Asked <span class="svc-title__accent">Questions</span></h2>
+                <p>Everything you need to know about working with us</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How long does a typical project take?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Project timelines vary based on complexity. A simple website typically takes 4-6 weeks, while complex web applications can take 3-6 months. We'll provide a detailed timeline during our initial consultation.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What technologies do you work with?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We work with modern technologies including React, Next.js, Node.js, PHP, Python, MongoDB, PostgreSQL, and cloud platforms like AWS and Google Cloud. Our tech stack is always evolving to stay current.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Do you provide ongoing support?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer various support packages including bug fixes, updates, security patches, and feature enhancements. All projects include a 30-day warranty period.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What is your pricing structure?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer flexible pricing models including fixed-price projects, hourly rates, and retainer agreements. Pricing depends on project scope, complexity, and timeline requirements.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Can you work with our existing team?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We frequently collaborate with in-house teams and can provide additional expertise, code reviews, or take on specific components of larger projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================
+         INTERACTIVE CTA BANNER
+    ==================================================== -->
+    <section class="cta-banner" id="cta-banner">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-text">
+                    <span class="section-badge">Ready to Start?</span>
+                    <h2>Let's Build Something <span class="svc-title__accent">Amazing</span> Together</h2>
+                    <p>Transform your ideas into reality with our expert development team. Get started with a free consultation today.</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="contact.html" class="cta-primary">Get Free Consultation</a>
+                    <a href="#portfolio" class="cta-secondary">View Our Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================
+         BLOG SECTION
+    ==================================================== -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Blog</span> 
+                <h2>Latest <span class="svc-title__accent">Articles</span></h2>
+                <p>Tips, Tricks, and Insights</p>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-date">Jan 15, 2026</div>
+                    <h3>10 Web Development Trends in 2026</h3>
+                    <p>Discover the latest trends shaping the future of web development and what every developer should know.</p>
+                    <a href="https://agilitycms.com/blog/top-10-web-development-trends-technologies-for-2026" class="read-more">Read More</a>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-date">Mar 10, 2026</div>
+                    <h3>Optimizing React Performance</h3>
+                    <p>Learn advanced techniques to optimize your React applications for better performance and user experience.</p>
+                    <a href="https://www.agilesoftlabs.com/blog/2026/03/react-native-performance-optimization" class="read-more">Read More</a>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-date">May 5, 2026</div>
+                    <h3>Building Secure APIs</h3>
+                    <p>Essential security practices for API development to protect your applications and user data.</p>
+                    <a href="https://curity.io/blog/api-security-trends-2026/" class="read-more">Read More</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHATBOT -->
+    <div class="chat-toggle" onclick="toggleChat()">
+        <img src="images/robot.png" alt="AI Chat" width="64" height="64" loading="lazy" decoding="async">
+    </div>
+    <div class="chat-container" id="chatBox">
+        <div class="chat-header">
+            <div class="chat-title">
+                <img src="images/robot.png" class="bot-img" alt="Bot" width="42" height="42" loading="lazy" decoding="async">
+                <div class="title-text">
+                    <span class="main-title">Amvex AI</span>
+                    <span class="sub-title">Online • Replies instantly</span>
+                </div>
+            </div>
+            <span class="close-btn" onclick="toggleChat()">✖</span>
+        </div>
+        <div class="chat-messages" id="chatBody"></div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Ask us anything..." onkeydown="if(event.key==='Enter') sendMessage()">
+            <button onclick="sendMessage()">➤</button>
+        </div>
+    </div>
+
+    <script>
+    window.addEventListener("load", function () {
+        if (window.location.hash) {
+            const element = document.querySelector(window.location.hash);
+            if (element) {
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: "smooth" });
+                }, 200);
+            }
+        }
+    });
+
+    // FAQ Accordion Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Card Entrance Animations on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements that should animate
+        const animateElements = document.querySelectorAll(
+            '.svc-card, .portfolio-card, .process-step, .testimonial-card, .faq-item, .blog-card, .section-header'
+        );
+
+        animateElements.forEach(el => {
+            observer.observe(el);
+        });
+    });
+    </script>
+
+<footer class="footer">
+    <div class="footer-bg"></div>
+
+    <div class="container">
+        <div class="footer-content">
+
+            <!-- Brand -->
+            <div class="footer-col footer-brand">
+                <img src="images/new_logo4.png" alt="Amvex Tech Logo" width="180" height="68" loading="lazy" decoding="async">
+                <p>Building digital solutions that scale, perform, and transform businesses worldwide.</p>
+
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/amvextech.in/"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1EA3kJrzTf/"><i class="bi bi-facebook"></i></a>
+                    <a href="https://wa.me/917905457261"><i class="bi bi-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="service-web.html">Web Development</a></li>
+                    <li><a href="service-app.html">Mobile Apps</a></li>
+                    <li><a href="service-uiux.html">UI/UX Design</a></li>
+                    <li><a href="service-backend.html">Backend</a></li>
+                    <li><a href="service-security.html">Security</a></li>
+                    <li><a href="service-deployment.html">Deployment</a></li>
+                </ul>
+            </div>
+
+            <!-- CTA -->
+            <div class="footer-col footer-cta">
+                <h4>Start a Project</h4>
+                <p>Let's build something powerful together.</p>
+                <button onclick="window.location.href='contact.html'">
+                    Get Started →
+                </button>           
+             </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Amvex Tech — Crafted with precision in Mumbai</p>
+        </div>
+    </div>
+</footer>
+<script>
+
+const chips = document.querySelectorAll('.ctc-chip');
+const hiddenInput = document.getElementById('ctcServices');
+let selected = [];
+
+if (chips.length && hiddenInput) {
+    chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            const value = chip.dataset.val;
+            chip.classList.toggle('active');
+            selected = selected.includes(value)
+                ? selected.filter(v => v !== value)
+                : selected.concat(value);
+            hiddenInput.value = selected.join(', ');
+        });
+    });
+}
+
+</script>
+<script>
+
+const form = document.getElementById('contactForm');
+const submitBtn = document.getElementById('ctcSubmit');
+
+if (form && submitBtn) {
+    form.addEventListener('submit', () => {
+        submitBtn.disabled = true;
+        const submitText = submitBtn.querySelector('.ctc-submit__text');
+        if (submitText) submitText.textContent = 'Sending...';
+    });
+}
+
+</script>
+    <script src="script.js" defer></script>
+</body>
+</html>
