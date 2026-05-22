@@ -889,7 +889,7 @@ function getReply(msg) {
 
   function getNavbarOffset() {
     var rect = navbar ? navbar.getBoundingClientRect() : null;
-    return Math.ceil((rect ? rect.bottom : 72) + 18);
+    return Math.ceil((rect ? rect.bottom : 72) + 45);
   }
 
   function findHashTarget(hash) {
