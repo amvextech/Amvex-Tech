@@ -8,6 +8,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amvex Tech — Web Development & Software Solutions</title>
     <meta name="description" content="Amvex Tech builds modern websites, web apps, mobile apps, and software solutions for businesses ready to scale.">
+    <meta name="theme-color" content="#ffffff">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
@@ -18,34 +19,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
     <link rel="preload" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"></noscript>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID', { 'anonymize_ip': true, 'page_title': document.title, 'page_location': window.location.href });
-    </script>
-    <script>
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                var perfData = window.performance.timing;
-                var loadTime = perfData.loadEventEnd - perfData.navigationStart;
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'page_load_time', { 'value': loadTime });
-                }
-            }, 0);
-        });
-        document.addEventListener('click', function(e) {
-            if (typeof gtag === 'undefined') return;
-            if (e.target.closest('.svc-card__cta')) {
-                gtag('event', 'service_click', { 'service_name': e.target.closest('.svc-card').querySelector('.svc-card__title').textContent });
-            }
-            if (e.target.closest('.btn-primary, .cta-primary')) {
-                gtag('event', 'contact_form_click', { 'button_text': e.target.textContent.trim() });
-            }
-        });
-    </script>
+    <!-- Analytics placeholder removed: prevents an invalid external request until a real GA ID is configured. -->
 </head>
 <body>
 
@@ -61,7 +35,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
     <div class="drawer-header">
         <div class="drawer-logo">
-            <img src="images/new_logo2.png" alt="Amvex Tech" width="180" height="68" decoding="async">
+            <img src="images/new_logo2.png" alt="Amvex Tech" width="180" height="68" decoding="async" loading="lazy">
         </div>
         <button class="drawer-close" id="drawerClose" aria-label="Close menu">
             <span class="drawer-close-icon">

@@ -54,41 +54,7 @@
             <p>© 2026 Amvex Tech — Crafted with precision in Mumbai</p>
         </div>
     </div>
-</footer>
-<script>
-
-const chips = document.querySelectorAll('.ctc-chip');
-const hiddenInput = document.getElementById('ctcServices');
-let selected = [];
-
-if (chips.length && hiddenInput) {
-    chips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            const value = chip.dataset.val;
-            chip.classList.toggle('active');
-            selected = selected.includes(value)
-                ? selected.filter(v => v !== value)
-                : selected.concat(value);
-            hiddenInput.value = selected.join(', ');
-        });
-    });
-}
-
-</script>
-<script>
-
-const form = document.getElementById('contactForm');
-const submitBtn = document.getElementById('ctcSubmit');
-
-if (form && submitBtn) {
-    form.addEventListener('submit', () => {
-        submitBtn.disabled = true;
-        const submitText = submitBtn.querySelector('.ctc-submit__text');
-        if (submitText) submitText.textContent = 'Sending...';
-    });
-}
-
-</script>
+</footer>
     <script src="script.js" defer></script>
 </body>
 </html>

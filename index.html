@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amvex Tech — Web Development & Software Solutions</title>
-    <meta name="description" content="Amvex Tech builds modern websites, web apps, mobile apps, and software solutions for businesses ready to scale.">
+    <title>Amvex Tech | Web Development & Software Solutions</title>
+    <meta name="description" content="Amvex Tech builds modern websites, web apps, mobile apps, UI/UX, backend systems, security, and deployment support for growing businesses.">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="robots" content="index, follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
@@ -15,34 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
     <link rel="preload" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"></noscript>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID', { 'anonymize_ip': true, 'page_title': document.title, 'page_location': window.location.href });
-    </script>
-    <script>
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                var perfData = window.performance.timing;
-                var loadTime = perfData.loadEventEnd - perfData.navigationStart;
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'page_load_time', { 'value': loadTime });
-                }
-            }, 0);
-        });
-        document.addEventListener('click', function(e) {
-            if (typeof gtag === 'undefined') return;
-            if (e.target.closest('.svc-card__cta')) {
-                gtag('event', 'service_click', { 'service_name': e.target.closest('.svc-card').querySelector('.svc-card__title').textContent });
-            }
-            if (e.target.closest('.btn-primary, .cta-primary')) {
-                gtag('event', 'contact_form_click', { 'button_text': e.target.textContent.trim() });
-            }
-        });
-    </script>
+    <!-- Analytics placeholder removed: prevents an invalid external request until a real GA ID is configured. -->
 </head>
 <body>
 
@@ -58,7 +33,7 @@
 
     <div class="drawer-header">
         <div class="drawer-logo">
-            <img src="images/new_logo2.png" alt="Amvex Tech" width="180" height="68" decoding="async">
+            <img src="images/new_logo2.png" alt="Amvex Tech" width="180" height="68" decoding="async" loading="lazy">
         </div>
         <button class="drawer-close" id="drawerClose" aria-label="Close menu">
             <span class="drawer-close-icon">
@@ -759,7 +734,7 @@
                         <div class="card-face card-front">
                             <div class="founder-image-premium">
                                 <div class="image-frame-full">
-                                    <img src="images/amir casual photo.jpeg" alt="Mohammad Amir, Founder & CEO" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: 24px;">
+                                    <img src="images/amir casual photo.jpeg" alt="Mohammad Amir, Founder & CEO" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: 24px;" width="1200" height="1600">
                                     <div class="image-overlay-full"></div>
                                     <div class="image-border-glow-full"></div>
                                     
@@ -817,7 +792,7 @@
             <div class="portfolio-grid">
                 <div class="portfolio-card">
                     <div class="project-image">
-                        <div class="image-placeholder"><img src="images/e-commerce platform.jpg" alt="E-Commerce Platform" loading="lazy" decoding="async"></div>
+                        <div class="image-placeholder"><img src="images/e-commerce platform.jpg" alt="E-Commerce Platform" loading="lazy" decoding="async" width="7008" height="4672"></div>
                     </div>
                     <div class="project-info">
                         <h3>E-Commerce Platform</h3>
@@ -831,7 +806,7 @@
                 </div>
                 <div class="portfolio-card">
                     <div class="project-image">
-                        <div class="image-placeholder"><img src="images/saas dashboard.jpg" alt="SaaS Dashboard" loading="lazy" decoding="async"></div>
+                        <div class="image-placeholder"><img src="images/saas dashboard.jpg" alt="SaaS Dashboard" loading="lazy" decoding="async" width="6720" height="4480"></div>
                     </div>
                     <div class="project-info">
                         <h3>SaaS Dashboard</h3>
@@ -845,7 +820,7 @@
                 </div>
                 <div class="portfolio-card">
                     <div class="project-image">
-                        <div class="image-placeholder"><img src="images/social networking app.jpg" alt="Social Networking App" loading="lazy" decoding="async"></div>
+                        <div class="image-placeholder"><img src="images/social networking app.jpg" alt="Social Networking App" loading="lazy" decoding="async" width="7200" height="4800"></div>
                     </div>
                     <div class="project-info">
                         <h3>Social Networking App</h3>
@@ -892,7 +867,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="images/about-us.jpg" alt="About Us" loading="lazy" decoding="async">
+                    <img src="images/about-us.jpg" alt="About Us" loading="lazy" decoding="async" width="1254" height="1254">
                 </div>
             </div>
         </div>
@@ -1520,41 +1495,7 @@
             <p>© 2026 Amvex Tech — Crafted with precision in Mumbai</p>
         </div>
     </div>
-</footer>
-<script>
-
-const chips = document.querySelectorAll('.ctc-chip');
-const hiddenInput = document.getElementById('ctcServices');
-let selected = [];
-
-if (chips.length && hiddenInput) {
-    chips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            const value = chip.dataset.val;
-            chip.classList.toggle('active');
-            selected = selected.includes(value)
-                ? selected.filter(v => v !== value)
-                : selected.concat(value);
-            hiddenInput.value = selected.join(', ');
-        });
-    });
-}
-
-</script>
-<script>
-
-const form = document.getElementById('contactForm');
-const submitBtn = document.getElementById('ctcSubmit');
-
-if (form && submitBtn) {
-    form.addEventListener('submit', () => {
-        submitBtn.disabled = true;
-        const submitText = submitBtn.querySelector('.ctc-submit__text');
-        if (submitText) submitText.textContent = 'Sending...';
-    });
-}
-
-</script>
+</footer>
     <script src="script.js" defer></script>
 </body>
 </html>

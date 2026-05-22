@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amvex Tech — Web Development & Software Solutions</title>
-    <meta name="description" content="Amvex Tech builds modern websites, web apps, mobile apps, and software solutions for businesses ready to scale.">
+    <title>Web Development Services | Amvex Tech</title>
+    <meta name="description" content="High-performance website and web app development with responsive UI, SEO structure, CMS integration, and scalable engineering.">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="robots" content="index, follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
@@ -15,34 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
     <link rel="preload" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"></noscript>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID', { 'anonymize_ip': true, 'page_title': document.title, 'page_location': window.location.href });
-    </script>
-    <script>
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                var perfData = window.performance.timing;
-                var loadTime = perfData.loadEventEnd - perfData.navigationStart;
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'page_load_time', { 'value': loadTime });
-                }
-            }, 0);
-        });
-        document.addEventListener('click', function(e) {
-            if (typeof gtag === 'undefined') return;
-            if (e.target.closest('.svc-card__cta')) {
-                gtag('event', 'service_click', { 'service_name': e.target.closest('.svc-card').querySelector('.svc-card__title').textContent });
-            }
-            if (e.target.closest('.btn-primary, .cta-primary')) {
-                gtag('event', 'contact_form_click', { 'button_text': e.target.textContent.trim() });
-            }
-        });
-    </script>
+    <!-- Analytics placeholder removed: prevents an invalid external request until a real GA ID is configured. -->
 </head>
 <body>
 
@@ -58,7 +33,7 @@
 
     <div class="drawer-header">
         <div class="drawer-logo">
-            <img src="images/new_logo2.png" alt="Amvex Tech" width="180" height="68" decoding="async">
+            <img src="images/new_logo2.png" alt="Amvex Tech" width="180" height="68" decoding="async" loading="lazy">
         </div>
         <button class="drawer-close" id="drawerClose" aria-label="Close menu">
             <span class="drawer-close-icon">
@@ -373,7 +348,7 @@
   <section class="swp-about" id="swp-about">
     <div class="swp-container swp-about-grid">
       <div class="swp-about-img-wrap">
-        <img src="images/web development.jpg" alt="Web Development" class="swp-about-img">
+        <img src="images/web development.jpg" alt="Web Development" class="swp-about-img" width="3840" height="2160" decoding="async" loading="lazy">
         <div class="swp-img-badge">
           <span class="swp-img-badge-icon">⚡</span>
           <div><strong>Fast Delivery</strong><small>2–4 Week Sprints</small></div>
@@ -493,7 +468,7 @@
       </div>
       <div class="swp-work-grid">
         <div class="swp-work-card">
-          <div class="swp-work-thumb swp-thumb-1"><img src="images/e-commerce platform.jpg"></div>
+          <div class="swp-work-thumb swp-thumb-1"><img src="images/e-commerce platform.jpg" width="7008" height="4672" alt="E Commerce Platform" decoding="async" loading="lazy"></div>
           <div class="swp-work-info">
             <h4>E-Commerce Platform</h4>
             <p>Full-stack store with payment gateway, inventory management, and admin panel.</p>
@@ -501,7 +476,7 @@
           </div>
         </div>
         <div class="swp-work-card">
-          <div class="swp-work-thumb swp-thumb-2"><img src="images/saas dashboard.jpg"></div>
+          <div class="swp-work-thumb swp-thumb-2"><img src="images/saas dashboard.jpg" width="6720" height="4480" alt="Saas Dashboard" decoding="async" loading="lazy"></div>
           <div class="swp-work-info">
             <h4>Analytics SaaS</h4>
             <p>Real-time dashboards with multi-tenant auth and data visualisation.</p>
@@ -509,7 +484,7 @@
           </div>
         </div>
         <div class="swp-work-card">
-          <div class="swp-work-thumb swp-thumb-3"><img src="images/corporate.jpg"></div>
+          <div class="swp-work-thumb swp-thumb-3"><img src="images/corporate.jpg" width="3600" height="2400" alt="Corporate" decoding="async" loading="lazy"></div>
           <div class="swp-work-info">
             <h4>Corporate Website</h4>
             <p>SEO-first corporate site with CMS integration and 98 Lighthouse score.</p>
@@ -625,41 +600,7 @@
             <p>© 2026 Amvex Tech — Crafted with precision in Mumbai</p>
         </div>
     </div>
-</footer>
-<script>
-
-const chips = document.querySelectorAll('.ctc-chip');
-const hiddenInput = document.getElementById('ctcServices');
-let selected = [];
-
-if (chips.length && hiddenInput) {
-    chips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            const value = chip.dataset.val;
-            chip.classList.toggle('active');
-            selected = selected.includes(value)
-                ? selected.filter(v => v !== value)
-                : selected.concat(value);
-            hiddenInput.value = selected.join(', ');
-        });
-    });
-}
-
-</script>
-<script>
-
-const form = document.getElementById('contactForm');
-const submitBtn = document.getElementById('ctcSubmit');
-
-if (form && submitBtn) {
-    form.addEventListener('submit', () => {
-        submitBtn.disabled = true;
-        const submitText = submitBtn.querySelector('.ctc-submit__text');
-        if (submitText) submitText.textContent = 'Sending...';
-    });
-}
-
-</script>
+</footer>
     <script src="script.js" defer></script>
 </body>
 </html>

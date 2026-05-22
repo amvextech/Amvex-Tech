@@ -1,4 +1,8 @@
 // AMVEX TECH — SCRIPT.JS //
+if ('scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+
 /* ============================================================
    HERO SECTION — script.js
    - Animated number counters (fires on scroll into view)
@@ -493,6 +497,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const msgArea   = document.getElementById('ctcMsg');
   const charSpan  = document.getElementById('ctcCharCount');
   const MAX_CHARS = 500;
+  const chips      = document.querySelectorAll('.ctc-chip');
+  const selectedServices = new Set();
 
   if (msgArea && charSpan) {
     msgArea.addEventListener('input', () => {
@@ -517,6 +523,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!ctcForm) return;
 
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const value = chip.dataset.val || chip.textContent.trim();
+      chip.classList.toggle('active');
+      chip.classList.contains('active')
+        ? selectedServices.add(value)
+        : selectedServices.delete(value);
+
+      const servicesField = document.getElementById('ctcServices');
+      if (servicesField) servicesField.value = Array.from(selectedServices).join(', ');
+    });
+  });
+
+  function resetSubmitState() {
+    if (!ctcSubmit) return;
+    ctcSubmit.disabled = false;
+    ctcSubmit.classList.remove('loading');
+    const btnText = ctcSubmit.querySelector('.ctc-submit__text');
+    if (btnText) btnText.textContent = 'Send Message';
+  }
+
   ctcForm.addEventListener('submit', function (e) {
 
     e.preventDefault();
@@ -536,6 +563,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const services = document.getElementById('ctcServices');
 
     let isValid = true;
+    let firstInvalid = null;
 
     function showError(input, msg) {
 
@@ -551,6 +579,8 @@ document.addEventListener('DOMContentLoaded', function () {
       err.textContent = msg;
 
       input.closest('.ctc-field').appendChild(err);
+
+      if (!firstInvalid) firstInvalid = input;
 
       isValid = false;
     }
@@ -574,10 +604,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     
 
-    if (!isValid) return;
+    if (!isValid) {
+      if (firstInvalid) firstInvalid.focus({ preventScroll: true });
+      return;
+    }
 
     // Loading state
     if (ctcSubmit) {
+
+      ctcSubmit.disabled = true;
 
       ctcSubmit.classList.add('loading');
 
@@ -663,6 +698,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
 
         alert('Something went wrong.');
+        resetSubmitState();
 
       }
 
@@ -670,7 +706,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     .catch(() => {
 
-      alert('Failed to send message.');
+      alert('Failed to send message. Please try again.');
+      resetSubmitState();
 
     });
 
@@ -851,8 +888,8 @@ function getReply(msg) {
   var pageName = path.split('/').pop() || 'index.html';
 
   function getNavbarOffset() {
-    var navHeight = navbar ? navbar.getBoundingClientRect().height : 0;
-    return Math.ceil(navHeight + 16);
+    var rect = navbar ? navbar.getBoundingClientRect() : null;
+    return Math.ceil((rect ? rect.bottom : 72) + 18);
   }
 
   function findHashTarget(hash) {
@@ -864,14 +901,46 @@ function getReply(msg) {
     }
   }
 
-  function scrollToHash(hash, behavior) {
+  function getScrollAnchor(target) {
+    if (!target || target.id === 'home') return target;
+    if (target.tagName && target.tagName.toLowerCase() === 'section') {
+      return target.querySelector(
+        '.section-header, .swp-section-header, .about-text, .ctc-header, .swp-about-text'
+      ) || target;
+    }
+    return target;
+  }
+
+  function getUntransformedTop(el) {
+    var top = el.getBoundingClientRect().top + window.pageYOffset;
+    var transform = window.getComputedStyle(el).transform;
+    if (transform && transform !== 'none') {
+      var matrix = transform.match(/matrix(3d)?\(([^)]+)\)/);
+      if (matrix) {
+        var values = matrix[2].split(',').map(function (value) {
+          return parseFloat(value.trim()) || 0;
+        });
+        top -= matrix[1] === '3d' ? values[13] : values[5];
+      }
+    }
+    return top;
+  }
+
+  function scrollToHash(hash, behavior, stabilize) {
     var target = findHashTarget(hash);
     if (!target) return false;
-    var top = target.getBoundingClientRect().top + window.pageYOffset - getNavbarOffset();
+    var anchor = getScrollAnchor(target);
+    var top = getUntransformedTop(anchor) - getNavbarOffset();
     window.scrollTo({
       top: Math.max(0, Math.round(top)),
       behavior: behavior || 'smooth'
     });
+    if (stabilize) {
+      window.clearTimeout(scrollToHash._stabilizeTimer);
+      scrollToHash._stabilizeTimer = window.setTimeout(function () {
+        scrollToHash(hash, 'auto', false);
+      }, behavior === 'smooth' ? 520 : 180);
+    }
     return true;
   }
 
@@ -902,6 +971,15 @@ function getReply(msg) {
   }, { passive: true });
 
   updateNavbar(); // set correct state immediately on page load
+
+  if (isHome && !window.location.hash) {
+    window.addEventListener('pageshow', function () {
+      var navEntry = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+      if (!navEntry || navEntry.type === 'reload') {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      }
+    }, { once: true });
+  }
 
   // Active link tracking on scroll — homepage only
   var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
@@ -938,15 +1016,14 @@ function getReply(msg) {
 
   // Hash scroll on load
   if (isHome && window.location.hash) {
-    window.history.scrollRestoration = 'manual';
     requestAnimationFrame(function () {
-      scrollToHash(window.location.hash, 'auto');
+      scrollToHash(window.location.hash, 'auto', false);
     });
     window.addEventListener('load', function () {
-      scrollToHash(window.location.hash, 'auto');
+      scrollToHash(window.location.hash, 'auto', true);
       setTimeout(function () {
-        scrollToHash(window.location.hash, 'smooth');
-      }, 250);
+        scrollToHash(window.location.hash, 'auto', false);
+      }, 450);
     }, { once: true });
     navLinks.forEach(function (link) {
       link.classList.remove('active');
@@ -1000,7 +1077,7 @@ function getReply(msg) {
       var href    = link.getAttribute('href') || '';
       var hashIdx = href.indexOf('#');
       if (hashIdx === -1) return;
-      if (isSamePageHashLink(href) && scrollToHash(href.slice(hashIdx), 'smooth')) {
+      if (isSamePageHashLink(href) && scrollToHash(href.slice(hashIdx), 'smooth', true)) {
         e.preventDefault();
         e.stopPropagation();
         navLinks.forEach(function (l) { l.classList.remove('active'); });
@@ -1025,7 +1102,7 @@ document.addEventListener('click', function (e) {
   var linkPage = href.slice(0, hashIdx).split('/').pop();
   var currentPage = (window.location.pathname.toLowerCase().split('/').pop() || 'index.html');
   if (linkPage && linkPage.toLowerCase() !== currentPage) return;
-  if (window.AmvexScrollToHash && window.AmvexScrollToHash(href.slice(hashIdx), 'smooth')) {
+  if (window.AmvexScrollToHash && window.AmvexScrollToHash(href.slice(hashIdx), 'smooth', true)) {
     e.preventDefault();
     if (window.history.pushState) {
       window.history.pushState(null, '', href.slice(hashIdx));
