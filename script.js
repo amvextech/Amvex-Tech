@@ -817,12 +817,94 @@ function getReply(msg) {
   const tabs      = document.querySelectorAll('.svc-tab');
   const indicator = document.querySelector('.svc-tab-indicator');
   const grid      = document.getElementById('svcGrid');
+  let filterBusy = false;
 
   function moveIndicator(tab) {
+    if (!tab || !indicator) return;
     const tabRect    = tab.getBoundingClientRect();
     const filterRect = tab.closest('.svc-filter').getBoundingClientRect();
     indicator.style.width     = tabRect.width + 'px';
     indicator.style.transform = `translateX(${tabRect.left - filterRect.left - 5}px)`;
+  }
+
+  function animateCardFilter(nextFilter) {
+    if (!grid || filterBusy) return;
+    filterBusy = true;
+
+    const cards = Array.from(grid.querySelectorAll('.svc-card'));
+    const firstRects = new Map();
+    const outgoing = [];
+
+    cards.forEach(card => {
+      if (!card.classList.contains('svc-hidden')) {
+        firstRects.set(card, card.getBoundingClientRect());
+      }
+      const matches = nextFilter === 'all' || card.dataset.cat === nextFilter;
+      if (!matches && !card.classList.contains('svc-hidden')) outgoing.push(card);
+    });
+
+    grid.style.minHeight = grid.getBoundingClientRect().height + 'px';
+    grid.classList.add('svc-grid--filtering');
+
+    const canAnimate = typeof Element !== 'undefined' && Element.prototype.animate;
+    const exitAnimations = canAnimate
+      ? outgoing.map(card => card.animate([
+          { opacity: 1, transform: 'translateY(0) scale(1)' },
+          { opacity: 0, transform: 'translateY(12px) scale(0.97)' }
+        ], { duration: 170, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', fill: 'forwards' }).finished.catch(() => {}))
+      : [];
+
+    Promise.all(exitAnimations).then(() => {
+      cards.forEach((card, i) => {
+        const matches = nextFilter === 'all' || card.dataset.cat === nextFilter;
+        card.style.transitionDelay = '0ms';
+        card.getAnimations().forEach(animation => animation.cancel());
+
+        if (matches) {
+          card.classList.remove('svc-hidden');
+          card.classList.add('svc-card--visible');
+          card.style.transitionDelay = (i * 35) + 'ms';
+        } else {
+          card.classList.add('svc-hidden');
+          card.style.transitionDelay = '0ms';
+        }
+      });
+
+      requestAnimationFrame(() => {
+        const enterAnimations = canAnimate
+          ? cards.filter(card => !card.classList.contains('svc-hidden')).map((card, index) => {
+              const first = firstRects.get(card);
+              const last = card.getBoundingClientRect();
+              const delay = Math.min(index * 28, 110);
+
+              if (first) {
+                const dx = first.left - last.left;
+                const dy = first.top - last.top;
+                if (Math.abs(dx) > 1 || Math.abs(dy) > 1) {
+                  return card.animate([
+                    { transform: `translate(${dx}px, ${dy}px) scale(0.985)`, opacity: 0.92 },
+                    { transform: 'translate(0, 0) scale(1)', opacity: 1 }
+                  ], { duration: 430, delay, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }).finished.catch(() => {});
+                }
+              }
+
+              return card.animate([
+                { transform: 'translateY(18px) scale(0.97)', opacity: 0 },
+                { transform: 'translateY(0) scale(1)', opacity: 1 }
+              ], { duration: 390, delay, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }).finished.catch(() => {});
+            })
+          : [];
+
+        Promise.all(enterAnimations).then(() => {
+          grid.classList.remove('svc-grid--filtering');
+          grid.style.minHeight = '';
+          cards.forEach(card => {
+            card.style.transitionDelay = '';
+          });
+          filterBusy = false;
+        });
+      });
+    });
   }
 
   const firstActive = document.querySelector('.svc-tab.active');
@@ -830,22 +912,12 @@ function getReply(msg) {
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
+      if (tab.classList.contains('active') || filterBusy) return;
       tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
       tab.classList.add('active');
       tab.setAttribute('aria-selected', 'true');
       if (indicator) moveIndicator(tab);
-      const filter = tab.dataset.filter;
-      const cards  = grid ? grid.querySelectorAll('.svc-card') : [];
-      cards.forEach((card, i) => {
-        const matches = filter === 'all' || card.dataset.cat === filter;
-        if (matches) {
-          card.classList.remove('svc-hidden');
-          card.style.transitionDelay = (i * 60) + 'ms';
-        } else {
-          card.classList.add('svc-hidden');
-          card.style.transitionDelay = '0ms';
-        }
-      });
+      animateCardFilter(tab.dataset.filter);
     });
   });
 
