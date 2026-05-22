@@ -1419,17 +1419,6 @@
     </div>
 
     <script>
-    window.addEventListener("load", function () {
-        if (window.location.hash) {
-            const element = document.querySelector(window.location.hash);
-            if (element) {
-                setTimeout(() => {
-                    element.scrollIntoView({ behavior: "smooth" });
-                }, 200);
-            }
-        }
-    });
-
     // FAQ Accordion Functionality
     document.addEventListener('DOMContentLoaded', function() {
         const faqItems = document.querySelectorAll('.faq-item');

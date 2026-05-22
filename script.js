@@ -226,6 +226,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var drawerLinks = drawer.querySelectorAll('a.drawer-link, .drawer-sub-link');
     drawerLinks.forEach(function (link) {
       link.addEventListener('click', function () {
+        var href = link.getAttribute('href') || '';
+        if (href.indexOf('#') !== -1) {
+          closeDrawer();
+          return;
+        }
         setTimeout(function () { closeDrawer(); }, 120);
       });
     });
@@ -843,6 +848,42 @@ function getReply(msg) {
   var navLinks = document.querySelectorAll('.nav-link');
   var path     = window.location.pathname.toLowerCase();
   var isHome   = path.includes('index.html') || path === '/' || path.endsWith('/');
+  var pageName = path.split('/').pop() || 'index.html';
+
+  function getNavbarOffset() {
+    var navHeight = navbar ? navbar.getBoundingClientRect().height : 0;
+    return Math.ceil(navHeight + 16);
+  }
+
+  function findHashTarget(hash) {
+    if (!hash || hash === '#') return null;
+    try {
+      return document.getElementById(decodeURIComponent(hash.slice(1))) || document.querySelector(hash);
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function scrollToHash(hash, behavior) {
+    var target = findHashTarget(hash);
+    if (!target) return false;
+    var top = target.getBoundingClientRect().top + window.pageYOffset - getNavbarOffset();
+    window.scrollTo({
+      top: Math.max(0, Math.round(top)),
+      behavior: behavior || 'smooth'
+    });
+    return true;
+  }
+
+  function isSamePageHashLink(href) {
+    if (!href || href === '#') return false;
+    var hashIdx = href.indexOf('#');
+    if (hashIdx === -1) return false;
+    var linkPage = href.slice(0, hashIdx).split('/').pop();
+    return !linkPage || linkPage.toLowerCase() === pageName;
+  }
+
+  window.AmvexScrollToHash = scrollToHash;
 
   // Single RAF-throttled scroll handler — replaces all previous navbar scroll code
   var rafId = null;
@@ -877,7 +918,8 @@ function getReply(msg) {
       }
       if (current) {
         navLinks.forEach(function (link) {
-          link.classList.toggle('active', (link.getAttribute('href') || '') === 'index.html#' + current);
+          var href = link.getAttribute('href') || '';
+          link.classList.toggle('active', href === '#' + current || href === 'index.html#' + current);
         });
       }
       activeLinkRaf = null;
@@ -896,15 +938,20 @@ function getReply(msg) {
 
   // Hash scroll on load
   if (isHome && window.location.hash) {
-    var target = document.querySelector(window.location.hash);
-    if (target) {
+    window.history.scrollRestoration = 'manual';
+    requestAnimationFrame(function () {
+      scrollToHash(window.location.hash, 'auto');
+    });
+    window.addEventListener('load', function () {
+      scrollToHash(window.location.hash, 'auto');
       setTimeout(function () {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        scrollToHash(window.location.hash, 'smooth');
       }, 250);
-    }
+    }, { once: true });
     navLinks.forEach(function (link) {
       link.classList.remove('active');
-      if ((link.getAttribute('href') || '') === 'index.html' + window.location.hash) {
+      var href = link.getAttribute('href') || '';
+      if (href === window.location.hash || href === 'index.html' + window.location.hash) {
         link.classList.add('active');
       }
     });
@@ -953,12 +1000,14 @@ function getReply(msg) {
       var href    = link.getAttribute('href') || '';
       var hashIdx = href.indexOf('#');
       if (hashIdx === -1) return;
-      var el = document.querySelector(href.slice(hashIdx));
-      if (el) {
+      if (isSamePageHashLink(href) && scrollToHash(href.slice(hashIdx), 'smooth')) {
         e.preventDefault();
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        e.stopPropagation();
         navLinks.forEach(function (l) { l.classList.remove('active'); });
         link.classList.add('active');
+        if (window.history.pushState) {
+          window.history.pushState(null, '', href.slice(hashIdx));
+        }
       }
     });
   });
@@ -967,14 +1016,20 @@ function getReply(msg) {
 
 // ── Smooth scroll for ALL hash anchors on every page ─────────
 document.addEventListener('click', function (e) {
-  var anchor = e.target.closest('a[href^="#"]');
+  var anchor = e.target.closest('a[href*="#"]');
   if (!anchor) return;
   var href = anchor.getAttribute('href');
   if (href === '#') return;
-  var target = document.querySelector(href);
-  if (target) {
+  var hashIdx = href.indexOf('#');
+  if (hashIdx === -1) return;
+  var linkPage = href.slice(0, hashIdx).split('/').pop();
+  var currentPage = (window.location.pathname.toLowerCase().split('/').pop() || 'index.html');
+  if (linkPage && linkPage.toLowerCase() !== currentPage) return;
+  if (window.AmvexScrollToHash && window.AmvexScrollToHash(href.slice(hashIdx), 'smooth')) {
     e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (window.history.pushState) {
+      window.history.pushState(null, '', href.slice(hashIdx));
+    }
   }
 });
 

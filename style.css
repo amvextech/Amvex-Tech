@@ -65,9 +65,13 @@
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 86px;
+  scroll-padding-top:86px;
   -webkit-overflow-scrolling: touch;
   text-rendering: optimizeLegibility;
+}
+
+section[id] {
+  scroll-margin-top: 96px;
 }
 
 /* Main content padding for fixed navbar */
@@ -76,6 +80,10 @@ html {
 }
 
 @media (max-width: 768px) {
+  section[id] {
+    scroll-margin-top: 82px;
+  }
+
   .swp-page {
     padding-top: 60px; /* Smaller padding for mobile navbar */
   }
@@ -7273,24 +7281,6 @@ opacity:0;
   will-change: transform;
   transform: translateY(0) translateZ(0);
   backface-visibility: hidden;
-}
-
-/* Smooth loading and scrolling performance pass */
-section,
-.footer {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 900px;
-}
-
-.hero,
-.navbar,
-.mobile-drawer,
-.nav-overlay,
-.chat-container,
-.chat-toggle,
-.back-to-top {
-  content-visibility: visible;
-  contain-intrinsic-size: auto;
 }
 
 @media (max-width: 768px) {
