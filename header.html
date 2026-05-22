@@ -83,7 +83,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <ul class="drawer-links">
 
             <li class="drawer-item">
-                <a href="index.php" class="drawer-link <?php if($currentPage=='index.php') echo 'drawer-link--active'; ?>">
+                <a href="index.html" class="drawer-link <?php if($currentPage=='index.html') echo 'drawer-link--active'; ?>">
                     <span class="drawer-link-icon"><i class="bi bi-house"></i></span>
                     <span class="drawer-link-text">Home</span>
                     <span class="drawer-link-arrow"><i class="bi bi-arrow-right"></i></span>
@@ -99,41 +99,41 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <div class="drawer-accordion-panel" id="servicesAccordion" hidden>
                     <div class="drawer-accordion-inner">
                         <p class="drawer-accordion-label">Development</p>
-                        <a href="service-web.php" class="drawer-sub-link">
+                        <a href="service-web.html" class="drawer-sub-link">
                             <span class="drawer-sub-icon">🌐</span>
                             <div><strong>Web Development</strong><span>Modern fast websites</span></div>
                         </a>
-                        <a href="service-app.php" class="drawer-sub-link">
+                        <a href="service-app.html" class="drawer-sub-link">
                             <span class="drawer-sub-icon">📱</span>
                             <div><strong>Mobile Apps</strong><span>iOS & Android apps</span></div>
                         </a>
-                        <a href="service-backend.php" class="drawer-sub-link">
+                        <a href="service-backend.html" class="drawer-sub-link">
                             <span class="drawer-sub-icon">⚙️</span>
                             <div><strong>Backend Systems</strong><span>APIs & architecture</span></div>
                         </a>
                         <p class="drawer-accordion-label" style="margin-top:1rem;">Design & Security</p>
-                        <a href="service-uiux.php" class="drawer-sub-link">
+                        <a href="service-uiux.html" class="drawer-sub-link">
                             <span class="drawer-sub-icon">🎨</span>
                             <div><strong>UI/UX Design</strong><span>Beautiful interfaces</span></div>
                         </a>
-                        <a href="service-security.php" class="drawer-sub-link">
+                        <a href="service-security.html" class="drawer-sub-link">
                             <span class="drawer-sub-icon">🔐</span>
                             <div><strong>Security</strong><span>OWASP protection</span></div>
                         </a>
-                        <a href="service-deployment.php" class="drawer-sub-link">
+                        <a href="service-deployment.html" class="drawer-sub-link">
                             <span class="drawer-sub-icon">🚀</span>
                             <div><strong>Deployment</strong><span>Cloud & CI/CD</span></div>
                         </a>
                         <div class="drawer-cta-card">
                             <p>Need a custom solution?</p>
-                            <button onclick="window.location.href='contact.php'" class="drawer-cta-btn">Start Project →</button>
+                            <button onclick="window.location.href='contact.html'" class="drawer-cta-btn">Start Project →</button>
                         </div>
                     </div>
                 </div>
             </li>
 
             <li class="drawer-item">
-                <a href="index.php#about" class="drawer-link">
+                <a href="index.html#about" class="drawer-link">
                     <span class="drawer-link-icon"><i class="bi bi-people"></i></span>
                     <span class="drawer-link-text">About</span>
                     <span class="drawer-link-arrow"><i class="bi bi-arrow-right"></i></span>
@@ -141,7 +141,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </li>
 
             <li class="drawer-item">
-                <a href="index.php#faq" class="drawer-link">
+                <a href="index.html#faq" class="drawer-link">
                     <span class="drawer-link-icon"><i class="bi bi-grid"></i></span>
                     <span class="drawer-link-text">FAQs</span>
                     <span class="drawer-link-arrow"><i class="bi bi-arrow-right"></i></span>
@@ -149,7 +149,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </li>
 
             <li class="drawer-item">
-                <a href="index.php#blog" class="drawer-link">
+                <a href="index.html#blog" class="drawer-link">
                     <span class="drawer-link-icon"><i class="bi bi-journal-text"></i></span>
                     <span class="drawer-link-text">Blog</span>
                     <span class="drawer-link-arrow"><i class="bi bi-arrow-right"></i></span>
@@ -157,7 +157,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </li>
 
             <li class="drawer-item">
-                <a href="contact.php" class="drawer-link drawer-link--cta <?php if($currentPage=='contact.php') echo 'drawer-link--active'; ?>">
+                <a href="contact.html" class="drawer-link drawer-link--cta <?php if($currentPage=='contact.html') echo 'drawer-link--active'; ?>">
                     <span class="drawer-link-icon"><i class="bi bi-envelope"></i></span>
                     <span class="drawer-link-text">Contact Us</span>
                     <span class="drawer-link-badge">Let's Talk</span>
@@ -186,7 +186,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
         <!-- Logo -->
         <div class="logo">
-            <a href="index.php" aria-label="Amvex Tech home">
+            <a href="index.html" aria-label="Amvex Tech home">
                 <img src="images/new_logo2.png" alt="Amvex Tech" width="180" height="68" decoding="async" fetchpriority="high">
             </a>
         </div>
@@ -195,15 +195,15 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <ul class="nav-links" id="navLinks" role="menubar">
 
             <li role="none">
-                <a href="index.php"
-                   class="nav-link <?php if($currentPage=='index.php') echo 'active'; ?>"
+                <a href="index.html"
+                   class="nav-link <?php if($currentPage=='index.html') echo 'active'; ?>"
                    role="menuitem">
                    Home
                 </a>
             </li>
 
             <li class="mega-menu" role="none">
-                <a href="index.php#services"
+                <a href="index.html#services"
                    class="nav-link <?php if(strpos($currentPage,'service')!==false) echo 'active'; ?>"
                    role="menuitem"
                    aria-haspopup="true"
@@ -218,15 +218,15 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
                         <div class="mega-col">
                             <h4>Development</h4>
-                            <a href="service-web.php" class="mega-item" role="menuitem">
+                            <a href="service-web.html" class="mega-item" role="menuitem">
                                 <span>🌐</span>
                                 <div><strong>Web Development</strong><p>Modern fast websites</p></div>
                             </a>
-                            <a href="service-app.php" class="mega-item" role="menuitem">
+                            <a href="service-app.html" class="mega-item" role="menuitem">
                                 <span>📱</span>
                                 <div><strong>Mobile Apps</strong><p>iOS & Android apps</p></div>
                             </a>
-                            <a href="service-backend.php" class="mega-item" role="menuitem">
+                            <a href="service-backend.html" class="mega-item" role="menuitem">
                                 <span>⚙️</span>
                                 <div><strong>Backend Systems</strong><p>APIs & architecture</p></div>
                             </a>
@@ -234,15 +234,15 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
                         <div class="mega-col">
                             <h4>Design & Security</h4>
-                            <a href="service-uiux.php" class="mega-item" role="menuitem">
+                            <a href="service-uiux.html" class="mega-item" role="menuitem">
                                 <span>🎨</span>
                                 <div><strong>UI/UX Design</strong><p>Beautiful interfaces</p></div>
                             </a>
-                            <a href="service-security.php" class="mega-item" role="menuitem">
+                            <a href="service-security.html" class="mega-item" role="menuitem">
                                 <span>🔐</span>
                                 <div><strong>Security</strong><p>OWASP protection</p></div>
                             </a>
-                            <a href="service-deployment.php" class="mega-item" role="menuitem">
+                            <a href="service-deployment.html" class="mega-item" role="menuitem">
                                 <span>🚀</span>
                                 <div><strong>Deployment</strong><p>Cloud & CI/CD</p></div>
                             </a>
@@ -251,7 +251,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         <div class="mega-highlight">
                             <h3>Need a custom solution?</h3>
                             <p>We help startups & businesses scale with powerful tech.</p>
-                            <button onclick="window.location.href='contact.php'">Start Project →</button>
+                            <button onclick="window.location.href='contact.html'">Start Project →</button>
                         </div>
 
                     </div>
@@ -259,20 +259,20 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </li>
 
             <li role="none">
-                <a href="index.php#about" class="nav-link" role="menuitem">About</a>
+                <a href="index.html#about" class="nav-link" role="menuitem">About</a>
             </li>
 
             <li role="none">
-                <a href="index.php#faq" class="nav-link" role="menuitem">FAQs</a>
+                <a href="index.html#faq" class="nav-link" role="menuitem">FAQs</a>
             </li>
 
             <li role="none">
-                <a href="index.php#blog" class="nav-link" role="menuitem">Blog</a>
+                <a href="index.html#blog" class="nav-link" role="menuitem">Blog</a>
             </li>
 
             <li role="none">
-                <a href="contact.php"
-                   class="nav-link <?php if($currentPage=='contact.php') echo 'active'; ?>"
+                <a href="contact.html"
+                   class="nav-link <?php if($currentPage=='contact.html') echo 'active'; ?>"
                    role="menuitem">
                    Contact
                 </a>
