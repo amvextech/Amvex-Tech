@@ -3305,15 +3305,21 @@ box-shadow:
   border-color: transparent;
   z-index: 5;
 }
+.svc-card:nth-child(1) {border:solid 1.3px; border-color: #4f6ef7; }
+.svc-card:nth-child(2) {border:solid 1.3px; border-color: #0ea5e9; }
+.svc-card:nth-child(3) {border:solid 1.3px; border-color: #922537; }
+.svc-card:nth-child(4) {border:solid 1.3px;border-color: #f8b440; }
+.svc-card:nth-child(5) {border:solid 1.3px; border-color: #10b981; }
+.svc-card:nth-child(6) {border:solid 1.3px; border-color: #f59e0b; }
 
 .svc-card--featured { grid-column: span 1; }
 .svc-card--featured:hover { box-shadow: 0 24px 60px rgba(131,131,132,0.18); }
-.svc-card:nth-child(1):hover {border:solid 1.3px; border-color: #4f6ef7; }
-.svc-card:nth-child(2):hover { border:solid 1.3px; border-color: #0ea5e9; }
-.svc-card:nth-child(3):hover {border:solid 1.3px; border-color: #922537; }
-.svc-card:nth-child(4):hover { border:solid 1.3px;border-color: #f8b440; }
-.svc-card:nth-child(5):hover {border:solid 1.3px; border-color: #10b981; }
-.svc-card:nth-child(6):hover {border:solid 1.3px; border-color: #f59e0b; }
+.svc-card:nth-child(1):hover {border:solid 1.33px; border-color: #4f6ef7; }
+.svc-card:nth-child(2):hover {border:solid 1.33px; border-color: #0ea5e9; }
+.svc-card:nth-child(3):hover {border:solid 1.33px; border-color: #922537; }
+.svc-card:nth-child(4):hover {border:solid 1.33px;border-color: #f8b440; }
+.svc-card:nth-child(5):hover {border:solid 1.33px; border-color: #10b981; }
+.svc-card:nth-child(6):hover {border:solid 1.33px; border-color: #f59e0b; }
 
 .svc-card__glow {
   position: absolute;
@@ -5770,6 +5776,11 @@ transition:background 0.25s var(--ease),
 .amvex-num-blue   { color: #60a5fa; }
 .amvex-num-green  { color: #34d399; }
 .amvex-num-orange { color: #fbbf24; }
+.amvex-why-card-feature:nth-child(1){ border-color: #f9a8d4; }
+.amvex-why-card-feature:nth-child(2){ border-color: #f9a8d4; }
+.amvex-why-card-feature:nth-child(3){ border-color: #93c5fd; }
+.amvex-why-card-feature:nth-child(4){ border-color: #6ee7b7; }
+.amvex-why-card-feature:nth-child(5){ border-color: #fcd34d; }
 
 /* Card-specific border accent on hover */
 .amvex-why-card-feature:nth-child(2):hover { border-color: #f9a8d4; }
