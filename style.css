@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+
 /* ============================================================
    AMVEX TECH — MAIN STYLESHEET
    Aesthetic: Modern SaaS Professional
-   Fonts: DM Sans (Body) + Clash Display (Headings)
+   Fonts: Plus Jakarta Sans (Body) + Inter (Headings)
    ============================================================ */
 
 /* ── CSS VARIABLES ─────────────────────────────────────────── */
@@ -33,8 +35,8 @@
     #e3e5f4 100%
   );
 
-  --font-body:    'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Clash Display', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body:    'Plus Jakarta Sans', sans-serif;
+  --font-heading:  'Inter', sans-serif;
 
   --radius:    14px;
   --radius-lg: 24px;
@@ -529,9 +531,9 @@ body {
 }
 
 .breadcrumb-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
 }
 
 .breadcrumb-item a {
@@ -564,6 +566,9 @@ body {
   border: 2px solid var(--border);
   border-radius: var(--radius);
   font-size: 16px;
+  font-family: var(--font-body);
+  letter-spacing: 0.01em;
+  line-height: 1.4;
   transition: all 0.3s ease;
   background: var(--white);
 }
@@ -845,7 +850,7 @@ body {
 img { max-width:100%; display:block; }
 a   { text-decoration:none; color:inherit; }
 ul  { list-style:none; }
-button { font-family:inherit; cursor:pointer; border:none; outline:none; }
+button { font-family: var(--font-body); cursor:pointer; border:none; outline:none; }
 
 /* ── NOISE TEXTURE OVERLAY ──────────────────────────────────── */
 body::before {
@@ -863,33 +868,33 @@ body::before {
 
 /* ── TYPOGRAPHY ─────────────────────────────────────────────── */
 h1,h2,h3,h4,h5 {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-weight:600;
   line-height:1.15;
-  letter-spacing:-0.02em;
+  letter-spacing:-0.01em;
   color: var(--ink);
 }
 
 h1 {
   font-size: clamp(2.25rem, 5vw, 3.75rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: -0.025em;
   line-height: 1.1;
   margin-bottom: 1.5rem;
 }
 
 h2 {
   font-size: clamp(1.75rem, 4vw, 2.75rem);
-  font-weight: 500;
-  letter-spacing: -0.015em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   line-height: 1.2;
   margin-bottom: 1.25rem;
 }
 
 h3 {
   font-size: clamp(1.375rem, 3vw, 2rem);
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  letter-spacing: -0.015em;
   line-height: 1.25;
   margin-bottom: 1rem;
 }
@@ -897,7 +902,7 @@ h3 {
 h4 {
   font-size: clamp(1.125rem, 2.5vw, 1.375rem);
   font-weight: 500;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
   line-height: 1.3;
   margin-bottom: 0.75rem;
 }
@@ -905,17 +910,18 @@ h4 {
 h5 {
   font-size: clamp(1rem, 2vw, 1.125rem);
   font-weight: 500;
-  letter-spacing: 0em;
+  letter-spacing: -0.005em;
   line-height: 1.4;
   margin-bottom: 0.5rem;
 }
 
 p {
   font-size: 1rem;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--ink-2);
   margin-bottom: 1rem;
   font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 .large-text {
@@ -1010,6 +1016,8 @@ floating 4s ease-in-out infinite;
   color:#fff;
   font-weight:600;
   font-size:0.9rem;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
   text-decoration:none;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1064,6 +1072,8 @@ floating 4s ease-in-out infinite;
   color:var(--ink);
   font-weight:500;
   font-size:0.9rem;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
   padding:14px 32px;
   border-radius:100px;
   border:2px solid var(--border);
@@ -1251,11 +1261,12 @@ floating 4s ease-in-out infinite;
   gap: 5px;
   font-size: 0.86rem;
   font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
   color: var(--ink-3);
   padding: 8px 14px;
   border-radius: 100px;
   text-decoration: none;
-  letter-spacing: -0.01em;
   transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
@@ -1320,6 +1331,8 @@ floating 4s ease-in-out infinite;
   border-radius: 100px;
   font-size: 0.82rem;
   font-family: var(--font-body);
+  letter-spacing: 0.01em;
+  line-height: 1.4;
   background: var(--surface);
   color: var(--ink);
   outline: none;
@@ -1661,7 +1674,7 @@ floating 4s ease-in-out infinite;
   justify-content: center;
   overflow: hidden;
   padding-top: 40px;   /* navbar height */
-  font-family: 'Sora', sans-serif;
+  font-family: var(--font-body);
 }
  
 /* ── BACKGROUND IMAGE ───────────────────────────────────────── */
@@ -1741,7 +1754,7 @@ floating 4s ease-in-out infinite;
  
 /* Subtitle */
 .hero-sub {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(0.88rem, 1.3vw, 1rem);
   color: var(--muted);
   line-height: 1.72;
@@ -1764,7 +1777,7 @@ floating 4s ease-in-out infinite;
   gap: 8px;
   background: var(--grad-main);
   color: #fff;
-  font-family: 'Sora', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.86rem;
   font-weight: 600;
   padding: 13px 26px;
@@ -1788,7 +1801,7 @@ floating 4s ease-in-out infinite;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   color: var(--ink-2);
-  font-family: 'Sora', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.86rem;
   font-weight: 600;
   padding: 13px 26px;
@@ -1849,7 +1862,7 @@ floating 4s ease-in-out infinite;
 }
  
 .proof-block {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.8rem;
   color: var(--muted);
   line-height: 1.4;
@@ -2026,7 +2039,7 @@ floating 4s ease-in-out infinite;
 }
  
 .stat-body p {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.78rem;
   color: var(--muted);
   font-weight: 500;
@@ -3226,7 +3239,7 @@ floating 4s ease-in-out infinite;
 .svc-mini-stat strong {
   display: block;
   font-size: 1.5rem;
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-weight: 700;
   background: var(--grad-main);
   -webkit-background-clip: text;
@@ -3344,7 +3357,7 @@ box-shadow:
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--soft);
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   z-index: 1;
   transition: color 0.3s;
 }
@@ -3546,7 +3559,7 @@ transition:background 0.25s var(--ease),
 }
 .svc-cta-strip__text strong {
   font-size: 1.1rem;
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-weight: 600;
   color: var(--white);
 }
@@ -6047,7 +6060,7 @@ transition:background 0.25s var(--ease),
 
 .step-number {
   font-size: 2.5rem;
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-weight: 700;
   color: rgba(79,110,247,0.15);
   line-height: 1;
@@ -6125,7 +6138,7 @@ transition:background 0.25s var(--ease),
     font-size: 48px;
     line-height: 1;
     color: rgba(79,110,247,0.12);
-    font-family: Georgia, serif;
+    font-family: var(--font-heading);
     margin-bottom: -10px;
 }
 
