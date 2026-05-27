@@ -1372,6 +1372,10 @@
     </section>
 
     <!-- CHATBOT -->
+     <div class="idle-bubble" id="idleBubble" onclick="toggleChat()">
+  💬 Need help? Ask us anything!
+       <span class="idle-close" onclick="event.stopPropagation(); document.getElementById('idleBubble').style.display='none'">✕</span>
+     </div>
     <div class="chat-toggle" onclick="toggleChat()">
         <img src="images/robot.png" alt="AI Chat" width="64" height="64" loading="lazy" decoding="async">
     </div>
@@ -1495,7 +1499,8 @@
             <p>© 2026 Amvex Tech — Crafted with precision in Mumbai</p>
         </div>
     </div>
-</footer>
+</footer>
+
     <script src="script.js" defer></script>
 </body>
 </html>

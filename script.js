@@ -718,6 +718,7 @@ document.addEventListener('DOMContentLoaded', function () {
 //  CHATBOT
 // ============================================================
 function toggleChat() {
+  document.getElementById("idleBubble").style.display = "none";
     const box = document.getElementById("chatBox");
     if (box.style.display === "flex") {
         box.style.display = "none";
@@ -1188,3 +1189,13 @@ document.addEventListener('click', function (e) {
   s.textContent = '.mega-menu.kb-open .mega-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);}';
   document.head.appendChild(s);
 })();
+
+
+// -----chatbot floating text ----//
+setTimeout(() => {
+  const bubble = document.getElementById("idleBubble");
+  const box = document.getElementById("chatBox");
+  if (box.style.display !== "flex") {
+    bubble.style.display = "block";
+  }
+}, 1000);
