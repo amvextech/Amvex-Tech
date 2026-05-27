@@ -5776,7 +5776,6 @@ transition:background 0.25s var(--ease),
 .amvex-num-blue   { color: #60a5fa; }
 .amvex-num-green  { color: #34d399; }
 .amvex-num-orange { color: #fbbf24; }
-.amvex-why-card-feature:nth-child(1){ border-color: #f9a8d4; }
 .amvex-why-card-feature:nth-child(2){ border-color: #f9a8d4; }
 .amvex-why-card-feature:nth-child(3){ border-color: #93c5fd; }
 .amvex-why-card-feature:nth-child(4){ border-color: #6ee7b7; }
